@@ -22,7 +22,12 @@
 
 # project settings
 #
-# Version: 20200625
+# Version: 20201220
+
+#additional library includes
+include squantorLibC/squantorLibC.mk
+include squantorLibEmbeddedC/squantorLibEmbeddedC.mk
+include libEmbedded/libEmbedded.mk
 
 # project settings
 MCU = LPC824M201JHI33

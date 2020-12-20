@@ -20,9 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# settings for the Cortex-M3 Core
+# settings for the Cortex-M4 Core
 #
-# Version: 20200509
+# Version: 20201220
 
 # Tool settings
 MAKE := make

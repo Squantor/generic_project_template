@@ -22,12 +22,12 @@
 
 # settings for the a generic Cortex M0+ microcontroller
 
-# Version: 20200427
+# Version: 20201220
 
 # import compiler settings for the core in this microcontroller
 include targets/core_CortexM0plus.mk
 
 # Specific C files and linker scripts
-FILES += targets/core_CortexM0plus.cpp targets/startup.cpp
+FILES += targets/src/core_CortexM0plus.cpp targets/src/startup.cpp
 DEFINES += -DMCU_$(MCU)
-LDSCRIPT = -T"targets/core_CortexMgeneric.ld"
+LDSCRIPT = -T"targets/ld/core_CortexMgeneric.ld"

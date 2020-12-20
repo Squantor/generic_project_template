@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 Bart Bilos
+Copyright (c) 2020 Bart Bilos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,4 +30,4 @@ MEMORY
 }
 
 /* Include main link script. Note: it will be searched in -L paths. */
-INCLUDE targets/linkscript.ld
+INCLUDE /linkscript.ld

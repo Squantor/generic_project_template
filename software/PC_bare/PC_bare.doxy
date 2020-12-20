@@ -1,0 +1,5 @@
+# doxygen settings to override from the default config
+PROJECT_NAME = "PC bare template"
+OUTPUT_DIRECTORY = documentation/PC_bare
+INCLUDE_PATH = PC_bare/inc targets/inc
+INPUT = PC_bare/src PC_bare/inc targets/inc targets/src

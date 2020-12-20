@@ -1,0 +1,18 @@
+[submodule "software/--force"]
+	path = software/--force
+	url = https://github.com/Squantor/squantorLibC.git
+[submodule "software/squantorLibC"]
+	path = software/squantorLibC
+	url = https://github.com/Squantor/squantorLibC.git
+[submodule "software/libEmbedded"]
+	path = software/libEmbedded
+	url = https://github.com/Squantor/libEmbedded.git
+[submodule "software/squantorMinUnit"]
+	path = software/squantorMinUnit
+	url = https://github.com/Squantor/squantorMinUnit.git
+[submodule "software/libMcuLL"]
+	path = software/libMcuLL
+	url = https://github.com/Squantor/libMcuLL.git
+[submodule "software/squantorLibEmbeddedC"]
+	path = software/squantorLibEmbeddedC
+	url = https://github.com/Squantor/squantorLibEmbeddedC.git

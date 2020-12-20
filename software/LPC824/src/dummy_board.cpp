@@ -1,7 +1,7 @@
 /*
 MIT License
 
-Copyright (c) 2019 Bart Bilos
+Copyright (c) 2020 Bart Bilos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include <board.hpp>
+#include <mcu_ll.h>
+
 
 void boardInit(void)
 {
+    // setup system clocks
+    ClockSetPLLBypass(false, false);
+    //SysctlPowerUp(SYSCTL_SLPWAKE_SYSOSC_PD);
+    ClockSetSystemPLLSource(SYSCTL_PLLCLKSRC_IRC);
+    //ClockSetSystemPLLSource(SYSCTL_PLLCLKSRC_SYSOSC);
+    FmcSetFlashAccess(FLASHTIM_30MHZ_CPU);
+    SysctlPowerDown(SYSCTL_SLPWAKE_SYSPLL_PD);
+    ClockSetupSystemPLL(4, 1);
+    SysctlPowerUp(SYSCTL_SLPWAKE_SYSPLL_PD);
+    while (!ClockIsSystemPLLLocked());
+    ClockSetSysClockDiv(2);
+    ClockSetMainClockSource(SYSCTL_MAINCLKSRC_PLLOUT);
 }

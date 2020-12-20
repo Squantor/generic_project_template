@@ -37,7 +37,7 @@ post-build: main-build
 
 #project hardware specific commands
 gdbbmp: all
-	$(TOOLCHAIN_PREFIX)$(GDB) -x ./gdb_scripts/$(PROJECT).txt
+	$(TOOLCHAIN_PREFIX)$(GDB) -x ./gdb_scripts/$(PROJECT)_$(CONFIG).txt
 .PHONY: gdbbmp
 
 tpwrdisable:

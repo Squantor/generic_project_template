@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "debug LPC812 example",
+            "name": "debug LPC824 example",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/LPC812/debug/LPC812.elf",
+            "program": "${workspaceFolder}/bin/LPC824/debug/LPC824.elf",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -27,11 +27,11 @@
                 },
                 {
                     "description": "Load the file",
-                    "text": "file ${workspaceFolder}/bin/LPC812/debug/LPC812.elf"
+                    "text": "file ${workspaceFolder}/bin/LPC824/debug/LPC824.elf"
                 },
                 {
                     "description": "Connect to black magic probe",
-                    "text": "target extended-remote /dev/ttyBmpGdb0"
+                    "text": "target extended-remote /dev/ttyACM0"
                 },
                 {
                     "description": "scan SWD bus",
@@ -51,7 +51,7 @@
                 },
                 {
                     "description": "program the elf file",
-                    "text": "load ${workspaceFolder}/bin/LPC812/debug/LPC812.elf"
+                    "text": "load ${workspaceFolder}/bin/LPC824/debug/LPC824.elf"
                 },
                 {
                     "description": "remap interrupt vectors to flash, again",
@@ -62,8 +62,8 @@
                     "text": "compare-sections"
                 },
             ],
-            "preLaunchTask": "build LPC812 example",
-            "miDebuggerPath": "/home/abilos/programs/gcc-arm-none-eabi-9-2019-q4-major/bin/arm-none-eabi-gdb",
+            "preLaunchTask": "build LPC824 example",
+            "miDebuggerPath": "/home/abilos/programs/gcc-arm-none-eabi-9-2020-q2-update/bin//arm-none-eabi-gdb",
         },
 
     ]

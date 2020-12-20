@@ -4,13 +4,20 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build LPC812 example",
+            "label": "build LPC824 example",
             "type": "shell",
-            "command": "make PROJECT=LPC812",
+            "command": "make PROJECT=LPC824 -j20",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "build LPC812 example",
+            "type": "shell",
+            "command": "make PROJECT=LPC812 -j20",
+            "group": "build",
             "problemMatcher": "$gcc"
         },
         {

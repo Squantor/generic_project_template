@@ -23,7 +23,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20201120
+# Version: 20201220
 
 # User definable settings are here
 
@@ -81,11 +81,13 @@ ASMFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 
 # for a multi project build pipeline
 ifdef PROJECT
+DOC_PATH := documentation/$(PROJECT)
 BIN_PATH := bin/$(PROJECT)/$(CONFIG)
 OBJ_PATH := build/$(PROJECT)/$(CONFIG)
 EXECUTABLE := $(BIN_PATH)/$(PROJECT).elf
 SIZELOG_PATH := $(PROJECT)/
 else
+DOC_PATH := documentation
 BIN_PATH := bin/$(CONFIG)
 OBJ_PATH := build/$(CONFIG)
 EXECUTABLE := $(BIN_PATH)/$(PROJECT).elf
@@ -114,6 +116,7 @@ main-build: pre-build $(EXECUTABLE)
 -include $(DEPS)
 
 doc:
+	$(C)$(MKDIR) -p $(DOC_PATH)
 	$(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
 .PHONY: doc
 
@@ -152,6 +155,7 @@ clean: $(COMMONDEPS)
 	$(U) "Cleaning"
 	$(C)$(RM) -r bin
 	$(C)$(RM) -r build
+	$(C)$(RM) -r documentation
 .PHONY: clean
 
 # project specific makefile rules

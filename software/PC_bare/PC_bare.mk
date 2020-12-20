@@ -22,7 +22,9 @@
 
 # project settings
 #
-# Version: 20200722
+# Version: 20201220
+
+include squantorLibC/squantorLibC.mk
 
 # project settings
 TARGET = PC_bare

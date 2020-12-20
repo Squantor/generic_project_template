@@ -8,6 +8,7 @@
             "name": "debug LPC824 example",
             "type": "cppdbg",
             "request": "launch",
+            "targetArchitecture": "x86_64",
             "program": "${workspaceFolder}/bin/LPC824/debug/LPC824.elf",
             "args": [],
             "stopAtEntry": false,

@@ -153,9 +153,9 @@ $(OBJ_PATH)/%.s.o: %.s $(COMMONDEPS)
 
 clean: $(COMMONDEPS)
 	$(U) "Cleaning"
-	$(C)$(RM) -r bin
-	$(C)$(RM) -r build
-	$(C)$(RM) -r documentation
+	$(C)$(RM) -rf bin
+	$(C)$(RM) -rf build
+	$(C)$(RM) -rf documentation
 .PHONY: clean
 
 # project specific makefile rules

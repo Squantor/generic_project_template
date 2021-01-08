@@ -30,7 +30,7 @@ include squantorLibEmbeddedC/squantorLibEmbeddedC.mk
 include libEmbedded/libEmbedded.mk
 
 # project settings
-MCU = LPC824M201JHI33
+MCU = LPC845M301JBD48
 TARGET = MCU
 BOARD = dummy_board
 

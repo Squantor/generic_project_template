@@ -1,0 +1,5 @@
+# doxygen settings to override from the default config
+PROJECT_NAME = "LPC1125 template"
+OUTPUT_DIRECTORY = documentation/LPC1125
+INCLUDE_PATH = LPC1125/inc libMcull/inc
+INPUT = LPC1125/src LPC1125/inc

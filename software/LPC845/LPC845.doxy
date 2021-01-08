@@ -1,0 +1,5 @@
+# doxygen settings to override from the default config
+PROJECT_NAME = "LPC824 template"
+OUTPUT_DIRECTORY = documentation/LPC824
+INCLUDE_PATH = LPC824/inc libMcull/inc
+INPUT = LPC824/src LPC824/inc

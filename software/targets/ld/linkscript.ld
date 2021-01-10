@@ -1,12 +1,8 @@
 /*
- * Unified Cortex Startup - GNU ld linker script file
+ * SPDX-License-Identifier: MIT
  *
- * This file is in public domain
- *
- * Put together by Paul Sokolovsky based on article by Vanya Sergeev
- * http://dev.frozeneskimo.com/notes/cortex_cmsis/ , GNU ld documentation
- * and numerous other public resources.
- *
+ * Copyright (c) 2021 Bart Bilos
+ * For conditions of distribution and use, see LICENSE file
  */
 
 ENTRY(Reset_Handler)

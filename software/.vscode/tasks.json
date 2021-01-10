@@ -17,20 +17,14 @@
             "label": "build LPC845 debug example",
             "type": "shell",
             "command": "make PROJECT=LPC845 config=debug -j20",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "problemMatcher": "$gcc"
         },
         {
             "label": "build LPC824 example",
             "type": "shell",
             "command": "make PROJECT=LPC824 -j20",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "problemMatcher": "$gcc"
         },
         {

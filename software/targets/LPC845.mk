@@ -2,7 +2,7 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# settings for the LPC824 Microcontroller
+# settings for the lpc845 Microcontroller
 #
 # Version: 20210108
 

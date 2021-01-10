@@ -5,73 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "debug LPC824 example",
-            "type": "cppdbg",
-            "request": "launch",
-            "targetArchitecture": "x86_64",
-            "program": "${workspaceFolder}/bin/LPC824/debug/LPC824.elf",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "setup architecture",
-                    "text": "set architecture armv7"
-                },
-                {
-                    "description": "Load the file",
-                    "text": "file ${workspaceFolder}/bin/LPC824/debug/LPC824.elf"
-                },
-                {
-                    "description": "Connect to black magic probe",
-                    "text": "target extended-remote /dev/ttyACM0"
-                },
-                {
-                    "description": "scan SWD bus",
-                    "text": "monitor swdp_scan"
-                },
-                {
-                    "description": "attach to controller",
-                    "text": "attach 1"
-                },
-                {
-                    "description": "enable access to inaccessible memory",
-                    "text": "set mem inaccessible-by-default off"
-                },
-                {
-                    "description": "remap interrupt vectors to flash",
-                    "text": "set {int}0x40048000 = 2"
-                },
-                {
-                    "description": "program the elf file",
-                    "text": "load ${workspaceFolder}/bin/LPC824/debug/LPC824.elf"
-                },
-                {
-                    "description": "remap interrupt vectors to flash, again",
-                    "text": "set {int}0x40048000 = 2"
-                },
-                {
-                    "description": "check if everything went okay",
-                    "text": "compare-sections"
-                },
-            ],
-            "preLaunchTask": "build LPC824 example",
-            "miDebuggerPath": "/home/abilos/programs/gcc-arm-none-eabi-9-2020-q2-update/bin//arm-none-eabi-gdb",
-        },
-        {
-            "name": "run LPC845 debug example",
+            "name": "run LPC1125 debug example",
             "type": "cppdbg",
             "request": "launch",
             // "targetArchitecture": "x86_64",
-            "program": "${workspaceFolder}/bin/LPC845/debug/LPC845.elf",
+            "program": "${workspaceFolder}/bin/LPC1125/debug/LPC1125.elf",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
@@ -90,7 +28,7 @@
                 },
                 {
                     "description": "Load the file",
-                    "text": "file ${workspaceFolder}/bin/LPC845/debug/LPC845.elf"
+                    "text": "file ${workspaceFolder}/bin/LPC1125/debug/LPC1125.elf"
                 },
                 {
                     "description": "Connect to black magic probe",
@@ -114,7 +52,7 @@
                 },
                 {
                     "description": "program the elf file",
-                    "text": "load ${workspaceFolder}/bin/LPC845/debug/LPC845.elf"
+                    "text": "load ${workspaceFolder}/bin/LPC1125/debug/LPC1125.elf"
                 },
                 {
                     "description": "remap interrupt vectors to flash, again",
@@ -125,10 +63,8 @@
                     "text": "compare-sections"
                 },
             ],
-            "preLaunchTask": "build LPC845 debug example",
+            "preLaunchTask": "build LPC1125 debug example",
             "miDebuggerPath": "/home/abilos/programs/gcc-arm-none-eabi-9-2020-q2-update/bin//arm-none-eabi-gdb",
-            "miDebuggerArgs": "-x ${workspaceFolder}/gdb_scripts/LPC845_debug.txt"
         },
-
     ]
 }

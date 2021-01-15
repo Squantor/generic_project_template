@@ -4,6 +4,16 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "build PC example",
+            "type": "shell",
+            "command": "make PROJECT=PC config=debug -j20",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
             "label": "build LPC1114_323 debug example",
             "type": "shell",
             "command": "make PROJECT=LPC1114_323 config=debug -j20",

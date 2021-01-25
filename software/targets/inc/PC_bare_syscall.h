@@ -1,7 +1,8 @@
 /*
- * Copyright (c) 2015, Louis P. Santillan <lpsantil@gmail.com>
- * All rights reserved.
- * See LICENSE for licensing details.
+ * SPDX-License-Identifier: MIT
+ *
+ * Copyright (c) 2021 Bart Bilos
+ * For conditions of distribution and use, see LICENSE file
  */
 
 #ifndef __RT0_SYSCALL__

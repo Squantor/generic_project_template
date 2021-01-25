@@ -1,0 +1,5 @@
+# doxygen settings to override from the default config
+PROJECT_NAME = "LPC845M301HI48 blink example"
+OUTPUT_DIRECTORY = documentation/LPC845M301HI48_blinky
+INCLUDE_PATH = LPC845M301HI48_blinky/inc libMcull/inc
+INPUT = LPC845M301HI48_blinky/src LPC845M301HI48_blinky/inc

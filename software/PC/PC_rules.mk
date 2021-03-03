@@ -4,18 +4,24 @@
 
 # Project specific rules with a few predefined, extend as needed
 #
-# Version: 20210207
+# Version: 20210303
 
 # always executed by build engine
 pre-build:
-	@echo executing pre build steps
+	$(U) "executing pre build steps"
 
 .PHONY: pre-build
 
 post-build: main-build generate-diassembly
-	@echo executing post build steps
+	$(U) "executing post build steps"
 
 .PHONY: post-build
+
+# run the executable
+execute: all
+	$(EXECUTABLE)
+
+.PHONY: execute
 
 DATESTRING := $(shell date +%Y%m%d%H%M%S)
 

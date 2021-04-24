@@ -4,13 +4,6 @@
 *.o
 *.obj
 build/
-Debug/
-Release/
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
 
 # Compiled Static libraries
 *.lai
@@ -34,3 +27,11 @@ disassemblies/
 
 # doxygen output
 documentation/
+
+#kicad temporaries
+*.kicad_pcb-bak
+*.sch-bak
+*.net
+*.tmp
+*.bak
+_autosave*

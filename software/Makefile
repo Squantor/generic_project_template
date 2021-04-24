@@ -84,7 +84,7 @@ endif
 OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
-DOCDEPS += $(DOC_ROOT)/build-tag
+DOCDEPS += $(DOC_PATH)/build-tag
 
 # Verbosity handling
 ifeq ($(VERBOSE),1)
@@ -109,15 +109,15 @@ main-build: pre-build $(EXECUTABLE)
 
 -include $(DEPS)
 
-$(DOC_ROOT)/build-tag:
+$(DOC_PATH)/build-tag:
 	$(C)$(MKDIR) -p $(DOC_PATH)
 	$(C)$(TOUCH) $@
 
-$(BIN_ROOT)/build-tag:
+$(BIN_PATH)/build-tag:
 	$(C)$(MKDIR) -p $(BIN_PATH)
 	$(C)$(TOUCH) $@
 
-$(OBJ_ROOT)/build-tag:
+$(OBJ_PATH)/build-tag:
 	$(C)$(MKDIR) -p $(OBJ_PATH)
 	$(C)$(TOUCH) $@
 

@@ -1,12 +1,11 @@
 /*
- * SPDX-License-Identifier: MIT
- *
- * Copyright (c) 2021 Bart Bilos
- * For conditions of distribution and use, see LICENSE file
- */
+SPDX-License-Identifier: MIT
 
-#ifndef __RT0__
-#define __RT0__
+Copyright (c) 2021 Bart Bilos
+For conditions of distribution and use, see LICENSE file
+*/
+#ifndef PC_BARE_RT0_H
+#define PC_BARE_RT0_H
 
 extern char **__environ; /**< pointer to array of char * strings that are the current environment variables */
 extern int PC_bare_errno; /**< Error value */

@@ -1,9 +1,9 @@
 /*
- * SPDX-License-Identifier: MIT
- *
- * Copyright (c) 2021 Bart Bilos
- * For conditions of distribution and use, see LICENSE file
- */
+SPDX-License-Identifier: MIT
+
+Copyright (c) 2021 Bart Bilos
+For conditions of distribution and use, see LICENSE file
+*/
 
 /*
 Based on Rt0: https://github.com/lpsantil/rt0

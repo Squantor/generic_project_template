@@ -1,9 +1,9 @@
 /*
- * SPDX-License-Identifier: MIT
- *
- * Copyright (c) 2021 Bart Bilos
- * For conditions of distribution and use, see LICENSE file
- */
+SPDX-License-Identifier: MIT
+
+Copyright (c) 2021 Bart Bilos
+For conditions of distribution and use, see LICENSE file
+*/
 #ifndef NUCLONE_LPC845M301BD48_HPP
 #define NUCLONE_LPC845M301BD48_HPP
 

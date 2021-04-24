@@ -61,24 +61,30 @@ CFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 CXXFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 ASMFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 
+# root paths for various outputs
+DOC_ROOT := doxyOutput
+BIN_ROOT := bin
+OBJ_ROOT := build
+
 # for a multi project build pipeline
 ifdef PROJECT
-DOC_PATH := documentation/$(PROJECT)
-BIN_PATH := bin/$(PROJECT)/$(CONFIG)
-OBJ_PATH := build/$(PROJECT)/$(CONFIG)
+DOC_PATH := $(DOC_ROOT)/$(PROJECT)
+BIN_PATH := $(BIN_ROOT)/$(PROJECT)/$(CONFIG)
+OBJ_PATH := $(OBJ_ROOT)/$(PROJECT)/$(CONFIG)
 EXECUTABLE := $(BIN_PATH)/$(PROJECT).elf
 SIZELOG_PATH := $(PROJECT)/
 else
-DOC_PATH := documentation
-BIN_PATH := bin/$(CONFIG)
-OBJ_PATH := build/$(CONFIG)
+DOC_PATH := $(DOC_ROOT)
+BIN_PATH := $(BIN_ROOT)/$(CONFIG)
+OBJ_PATH := $(OBJ_ROOT)/$(CONFIG)
 EXECUTABLE := $(BIN_PATH)/$(PROJECT).elf
 endif
 
 # create lists of prerequisites for the build
 OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 DEPS = $(OBJECTS:.o=.d)
-COMMONDEPS+= $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
+BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
+DOCDEPS += $(DOC_ROOT)/build-tag
 
 # Verbosity handling
 ifeq ($(VERBOSE),1)
@@ -103,18 +109,22 @@ main-build: pre-build $(EXECUTABLE)
 
 -include $(DEPS)
 
-doc:
+$(DOC_ROOT)/build-tag:
 	$(C)$(MKDIR) -p $(DOC_PATH)
-	$(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
-.PHONY: doc
+	$(C)$(TOUCH) $@
 
-$(BIN_PATH)/build-tag:
+$(BIN_ROOT)/build-tag:
 	$(C)$(MKDIR) -p $(BIN_PATH)
 	$(C)$(TOUCH) $@
 
-$(OBJ_PATH)/build-tag:
+$(OBJ_ROOT)/build-tag:
 	$(C)$(MKDIR) -p $(OBJ_PATH)
 	$(C)$(TOUCH) $@
+
+doc: $(DOCDEPS)
+	$(C)$(MKDIR) -p $(DOC_PATH)
+	$(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
+.PHONY: doc
 
 $(EXECUTABLE): $(OBJECTS)
 	$(U) "Linking $(EXECUTABLE)"
@@ -124,26 +134,26 @@ $(EXECUTABLE): $(OBJECTS)
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
 
-$(OBJ_PATH)/%.c.o: %.c $(COMMONDEPS)
+$(OBJ_PATH)/%.c.o: %.c $(BINDEPS)
 	$(U) "C   $(basename $(notdir $@))"
 	$(C)$(MKDIR) -p $(dir $@) 
 	$(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(CFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
-$(OBJ_PATH)/%.cpp.o: %.cpp $(COMMONDEPS)
+$(OBJ_PATH)/%.cpp.o: %.cpp $(BINDEPS)
 	$(U) "C++ $(basename $(notdir $@))"
 	$(C)$(MKDIR) -p $(dir $@) 
 	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
-$(OBJ_PATH)/%.s.o: %.s $(COMMONDEPS)
+$(OBJ_PATH)/%.s.o: %.s $(BINDEPS)
 	$(U) "ASM $(basename $(notdir $@))"
 	$(C)$(MKDIR) -p $(dir $@) 
 	$(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(ASMFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
-clean: $(COMMONDEPS)
+clean: $(BINDEPS) $(DOCDEPS)
 	$(U) "Cleaning"
-	$(C)$(RM) -rf bin
-	$(C)$(RM) -rf build
-	$(C)$(RM) -rf documentation
+	$(C)$(RM) -rf $(BIN_ROOT)
+	$(C)$(RM) -rf $(OBJ_ROOT)
+	$(C)$(RM) -rf $(DOC_ROOT)
 .PHONY: clean
 
 # project specific makefile rules

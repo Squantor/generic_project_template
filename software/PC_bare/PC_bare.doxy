@@ -1,5 +1,5 @@
 # doxygen settings to override from the default config
 PROJECT_NAME = "PC bare template"
-OUTPUT_DIRECTORY = documentation/PC_bare
+OUTPUT_DIRECTORY = doxyOutput/PC_bare
 INCLUDE_PATH = PC_bare/inc targets/inc squantorLibC/inc
 INPUT = PC_bare/src PC_bare/inc targets/inc targets/src squantorLibC/inc squantorLibC/src

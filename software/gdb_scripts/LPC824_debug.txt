@@ -1,3 +1,5 @@
+set print pretty on
+set architecture armv6
 file bin/LPC824/debug/LPC824.elf
 target extended-remote /dev/ttyACM0
 shell sleep 1

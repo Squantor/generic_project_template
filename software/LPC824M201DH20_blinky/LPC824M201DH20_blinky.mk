@@ -9,8 +9,7 @@
 #additional library includes
 include libMcuLL/libMcuLL.mk
 include squantorLibC/squantorLibC.mk
-include squantorLibEmbeddedC/squantorLibEmbeddedC.mk
-include libEmbedded/libEmbedded.mk
+include squantorLibEmbedded/squantorLibEmbedded.mk
 
 # project settings
 MCU = LPC824M201DH20

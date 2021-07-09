@@ -8,8 +8,7 @@
 
 #additional library includes
 include squantorLibC/squantorLibC.mk
-include squantorLibEmbeddedC/squantorLibEmbeddedC.mk
-include libEmbedded/libEmbedded.mk
+include squantorLibEmbedded/squantorLibEmbedded.mk
 
 # project settings
 MCU = LPC1114BD48_323

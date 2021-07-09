@@ -13,5 +13,5 @@ include targets/core_CortexM0plus.mk
 FILES += targets/src/LPC84X.cpp targets/src/startup_LPC84X.cpp \
 targets/src/LPC82X_aeabi_romdiv_patch.s
 DEFINES += -DMCU_$(MCU)
-LDSCRIPT = -T"targets/ld/LPC845.ld"
+LDSCRIPT = -T"targets/ld/LPC844.ld"
 

@@ -4,6 +4,13 @@
 *.o
 *.obj
 build/
+Debug/
+Release/
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
 # Compiled Static libraries
 *.lai
@@ -21,12 +28,11 @@ bin/
 *.log
 disassemblies/
 
-# eclipse stuff
-.settings/
-*.launch
-
 # doxygen output
 doxyOutput/
+
+#vscode files that are better ignored
+settings.json
 
 #kicad temporaries
 *.kicad_pcb-bak
@@ -35,3 +41,9 @@ doxyOutput/
 *.tmp
 *.bak
 _autosave*
+
+# freecad backup files
+*.FCStd?
+
+# ignore STL files, you can add them by forcing it
+*.stl

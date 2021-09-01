@@ -42,6 +42,13 @@ settings.json
 *.bak
 _autosave*
 
+# kicad outputs
+plots/
+plots-*/
+*_plots_*/
+*_plots/
+*.zip
+
 # freecad backup files
 *.FCStd?
 

@@ -27,7 +27,7 @@ CONFIGS = debug release
 CFLAGS = -std=gnu11 -Wall -Wextra -c
 CFLAGS_debug = -O0 -g3
 CFLAGS_release = -O2 -g
-CXXFLAGS = -std=c++17 -Wall -Wextra -c
+CXXFLAGS = -std=c++20 -Wall -Wextra -c
 CXXFLAGS_debug = -O0 -g3
 CXXFLAGS_release = -O2 -g
 ASMFLAGS = -c -x assembler-with-cpp

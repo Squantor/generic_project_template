@@ -6,11 +6,10 @@
                 "${workspaceFolder}/LPC824/inc",
                 "${workspaceFolder}/libMcuLL/inc/",
                 "${workspaceFolder}/squantorLibC/inc/",
-                "${workspaceFolder}/squantorLibEmbeddedC/inc/",
-                "${workspaceFolder}/libEmbedded/inc/"
+                "${workspaceFolder}/squantorLibEmbedded/inc/"
             ],
             "defines": [
-                "MCU_LPC824M201JHI33",
+                "MCU_LPC824M201HI33",
                 "DEBUG"
             ],
             "browse": {

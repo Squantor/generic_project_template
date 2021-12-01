@@ -7,6 +7,6 @@
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.default.intelliSenseMode": "gcc-x64",
     "C_Cpp.default.systemIncludePath": [],
-    "C_Cpp.default.includePath": [
-    ]
+    "C_Cpp.default.includePath": [],
+    "editor.formatOnSave": true
 }

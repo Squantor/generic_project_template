@@ -5,6 +5,35 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "debug LPC824 example debug mode",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/bin/LPC824/debug/LPC824.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "bmp",
+            "interface": "swd",
+            "device": "LPC824",
+            "BMPGDBSerialPort": "/dev/ttyACM0",
+            "runToMain": true,
+            "preLaunchCommands": [],
+            "preRestartCommands": [
+                "set print pretty on",
+                "file bin/LPC824/debug/LPC824.elf",
+                "monitor tpwr enable",
+                "shell sleep 1",
+                "monitor swdp_scan",
+                "attach 1",
+                "set mem inaccessible-by-default off",
+                "set {int}0x40048000 = 2",
+                "load bin/LPC824/debug/LPC824.elf",
+                "set {int}0x40048000 = 2",
+                "compare-sections",
+                "b main",
+            ],
+            "preLaunchTask": "build LPC824 example",
+            "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC824.svd"
+        },
+        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
@@ -24,69 +53,5 @@
             ],
             "preLaunchTask": "build PC example",
         },
-        /*
-        {
-            "name": "run LPC1125 debug example",
-            "type": "cppdbg",
-            "request": "launch",
-            // "targetArchitecture": "x86_64",
-            "program": "${workspaceFolder}/bin/LPC1125/debug/LPC1125.elf",
-            "args": [],
-            "stopAtEntry": true,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "setup architecture",
-                    "text": "set architecture armv7"
-                },
-                {
-                    "description": "Load the file",
-                    "text": "file ${workspaceFolder}/bin/LPC1125/debug/LPC1125.elf"
-                },
-                {
-                    "description": "Connect to black magic probe",
-                    "text": "target extended-remote /dev/ttyACM0"
-                },
-                {
-                    "description": "scan SWD bus",
-                    "text": "monitor swdp_scan"
-                },
-                {
-                    "description": "attach to controller",
-                    "text": "attach 1"
-                },
-                {
-                    "description": "enable access to inaccessible memory",
-                    "text": "set mem inaccessible-by-default off"
-                },
-                {
-                    "description": "remap interrupt vectors to flash",
-                    "text": "set {int}0x40048000 = 2"
-                },
-                {
-                    "description": "program the elf file",
-                    "text": "load ${workspaceFolder}/bin/LPC1125/debug/LPC1125.elf"
-                },
-                {
-                    "description": "remap interrupt vectors to flash, again",
-                    "text": "set {int}0x40048000 = 2"
-                },
-                {
-                    "description": "check if everything went okay",
-                    "text": "compare-sections"
-                },
-            ],
-            "preLaunchTask": "build LPC1125 debug example",
-            "miDebuggerPath": "/home/abilos/programs/gcc-arm-none-eabi-9-2020-q2-update/bin//arm-none-eabi-gdb",
-        },
-        */
     ]
 }

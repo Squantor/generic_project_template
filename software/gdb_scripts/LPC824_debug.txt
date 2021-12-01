@@ -2,6 +2,7 @@ set print pretty on
 set architecture armv6
 file bin/LPC824/debug/LPC824.elf
 target extended-remote /dev/ttyACM0
+monitor tpwr enable
 shell sleep 1
 monitor swdp_scan
 attach 1

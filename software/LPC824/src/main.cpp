@@ -17,5 +17,6 @@ int main() {
   boardInit();
   while (1) {
     var = var ^ 0x55;
+    __NOP();
   }
 }

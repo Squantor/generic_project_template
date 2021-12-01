@@ -9,15 +9,15 @@ For conditions of distribution and use, see LICENSE file
  * can be compiled and run on any Cortex-M MCU. However, to see
  * its effect, you'll need to use debugger.
  */
-#include <board.hpp>
 #include <mcu_ll.h>
+
+#include <board.hpp>
 
 volatile int var;
 
-int main()
-{
-    boardInit();
-    while (1) {
-        var ^= 0x55;
-    }
+int main() {
+  boardInit();
+  while (1) {
+    var ^= 0x55;
+  }
 }

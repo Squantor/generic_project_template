@@ -4,8 +4,8 @@ SPDX-License-Identifier: MIT
 Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
-#ifndef NUCLONE_LPC824M201DH20_HPP
-#define NUCLONE_LPC824M201DH20_HPP
+#ifndef NUCLONE_LPC812M101DH20_HPP
+#define NUCLONE_LPC812M101DH20_HPP
 
 #define CLOCK_MAIN_SOURCE SYSCTL_MAINCLKSRC_PLLOUT
 
@@ -18,11 +18,11 @@ For conditions of distribution and use, see LICENSE file
 #define IOCON_XTAL_IN IOCON_PIO0_8
 #define IOCON_XTAL_OUT IOCON_PIO0_9
 
-#define IOCON_LED IOCON_PIO0_23
+#define IOCON_LED IOCON_PIO0_13
 #define PORT_LED GPIO_PORT0
-#define PIN_LED (23u)
+#define PIN_LED (13u)
 
-#define TICKS_PER_S 4
+#define TICKS_PER_S 2
 
 void boardInit(void);
 

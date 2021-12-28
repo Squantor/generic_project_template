@@ -1,0 +1,5 @@
+# doxygen settings to override from the default config
+PROJECT_NAME = "LPC812 template"
+OUTPUT_DIRECTORY = doxyOutput/LPC812
+INCLUDE_PATH = LPC812/inc libMcull/inc
+INPUT = LPC812/src LPC812/inc

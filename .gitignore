@@ -54,3 +54,6 @@ plots-*/
 
 # ignore STL files, you can add them by forcing it
 *.stl
+
+#cortex debug temporaries
+.cortex-debug*

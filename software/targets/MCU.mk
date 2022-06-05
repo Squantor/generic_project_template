@@ -28,4 +28,3 @@ DEFINES += -D$(BOARD)
 DEFINES_release += -DNDEBUG
 DEFINES_debug += -DDEBUG
 LIBS += -lgcc
-

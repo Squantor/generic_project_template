@@ -20,7 +20,7 @@ CFLAGS += -std=gnu11 -Wall -Wextra -Wno-main -fno-common -c -ffunction-sections 
 CFLAGS_debug += -Og -g3
 CFLAGS_release += -Os -g
 CXXFLAGS += -std=gnu++20 -Wall -Wextra -Wno-main -fno-common -c -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions
-CXXFLAGS_debug += -O0 -g3
+CXXFLAGS_debug += -Og -g3
 CXXFLAGS_release += -Os -g
 ASMFLAGS += -c -x assembler-with-cpp
 LDFLAGS +=  -nostdlib -Wl,--gc-sections -Wl,-print-memory-usage -Wl,-Ltargets/ld

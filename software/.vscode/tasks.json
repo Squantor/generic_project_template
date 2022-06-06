@@ -4,6 +4,20 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "build LPC812 empty project",
+            "type": "shell",
+            "command": "make PROJECT=LPC812 -j20",
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "build LPC812 nuclone blinky project",
+            "type": "shell",
+            "command": "make PROJECT=LPC812M101DH20_blinky -j20",
+            "group": "build",
+            "problemMatcher": "$gcc"
+        },
+        {
             "label": "build PC example",
             "type": "shell",
             "command": "make PROJECT=PC config=debug -j20",
@@ -44,13 +58,7 @@
             "group": "build",
             "problemMatcher": "$gcc"
         },
-        {
-            "label": "build LPC812 empty project",
-            "type": "shell",
-            "command": "make PROJECT=LPC812 -j20",
-            "group": "build",
-            "problemMatcher": "$gcc"
-        },
+
         {
             "label": "clean",
             "type": "shell",

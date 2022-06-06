@@ -25,54 +25,25 @@
       "problemMatcher": "$gcc"
     },
     {
+      "label": "build LPC824 nuclone blinky project",
+      "type": "shell",
+      "command": "make PROJECT=LPC824M201HI33_blinky -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
       "label": "build PC example",
       "type": "shell",
       "command": "make PROJECT=PC config=debug -j20",
-      "group": {
-          "kind": "build",
-          "isDefault": true
-      },
-      "problemMatcher": "$gcc"
-    },
-    {
-      "label": "build LPC1114_323 debug example",
-      "type": "shell",
-      "command": "make PROJECT=LPC1114_323 config=debug -j20",
-      "group": {
-          "kind": "build",
-          "isDefault": true
-      },
-      "problemMatcher": "$gcc"
-    },
-    {
-      "label": "build LPC1125 debug example",
-      "type": "shell",
-      "command": "make PROJECT=LPC1125 config=debug -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
-      "label": "build LPC845 debug example",
+      "label": "clean",
       "type": "shell",
-      "command": "make PROJECT=LPC845 config=debug -j20",
+      "command": "make clean",
       "group": "build",
       "problemMatcher": "$gcc"
-    },
-    {
-      "label": "build LPC824 example",
-      "type": "shell",
-      "command": "make PROJECT=LPC824 -j20",
-      "group": "build",
-      "problemMatcher": "$gcc"
-    },
-    {
-        "label": "clean",
-        "type": "shell",
-        "command": "make clean",
-        "group": "build",
-        "problemMatcher": [
-            "$gcc"
-        ]
     }
   ]
 }

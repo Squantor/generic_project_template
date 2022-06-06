@@ -10,6 +10,7 @@
 include libMcuLL/libMcuLL.mk
 include squantorLibC/squantorLibC.mk
 include squantorLibEmbedded/squantorLibEmbedded.mk
+include squantorLibEmbedded/squantorLibEmbeddedCortexM.mk
 
 # project settings
 MCU = LPC824M201HI33

@@ -4,34 +4,23 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "debug LPC824 example debug mode",
+          {
+            "name": "Debug debug LPC812 empty",
             "cwd": "${workspaceRoot}",
-            "executable": "${workspaceFolder}/bin/LPC824/debug/LPC824.elf",
+            "executable": "${workspaceFolder}/bin/LPC812/debug/LPC812.elf",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "bmp",
             "interface": "swd",
-            "device": "LPC824",
+            "targetId": 1,
+            "device": "LPC812",
             "BMPGDBSerialPort": "/dev/ttyACM0",
             "runToEntryPoint": "main",
             "preLaunchCommands": [],
-            "preRestartCommands": [
-                "set print pretty on",
-                "file bin/LPC824/debug/LPC824.elf",
-                "monitor tpwr enable",
-                "shell sleep 1",
-                "monitor swdp_scan",
-                "attach 1",
-                "set mem inaccessible-by-default off",
-                "set {int}0x40048000 = 2",
-                "load bin/LPC824/debug/LPC824.elf",
-                "set {int}0x40048000 = 2",
-                "compare-sections",
-                "b main",
-            ],
-            "preLaunchTask": "build LPC824 example",
-            "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC824.svd"
+            "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
+            "preRestartCommands": [],
+            "preLaunchTask": "build LPC812 empty project",
+            "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC812.svd",
         },
         {
             "name": "(gdb) Launch",

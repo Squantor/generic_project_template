@@ -9,7 +9,7 @@
                 "${workspaceFolder}/squantorLibEmbedded/inc/"
             ],
             "defines": [
-                "MCU_LPC824M201HI33",
+                "MCU_LPC812M101DH20",
                 "DEBUG"
             ],
             "browse": {

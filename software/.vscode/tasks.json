@@ -45,7 +45,7 @@
             "problemMatcher": "$gcc"
         },
         {
-            "label": "build LPC812 example",
+            "label": "build LPC812 empty project",
             "type": "shell",
             "command": "make PROJECT=LPC812 -j20",
             "group": "build",
@@ -54,7 +54,8 @@
         {
             "label": "clean",
             "type": "shell",
-            "command": "make  PROJECT=LPC812 clean",
+            "command": "make clean",
+            "group": "build",
             "problemMatcher": [
                 "$gcc"
             ]

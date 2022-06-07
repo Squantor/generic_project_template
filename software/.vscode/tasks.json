@@ -25,9 +25,16 @@
       "problemMatcher": "$gcc"
     },
     {
-      "label": "build LPC824 nuclone blinky project",
+      "label": "build LPC824 QFN33 nuclone blinky project",
       "type": "shell",
       "command": "make PROJECT=LPC824M201HI33_blinky -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "build LPC824 TSSOP20 nuclone blinky project",
+      "type": "shell",
+      "command": "make PROJECT=LPC824M201DH20_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },

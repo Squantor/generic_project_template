@@ -10,14 +10,12 @@ For conditions of distribution and use, see LICENSE file
  * its effect, you'll need to use debugger.
  */
 #include <board.hpp>
-//#include <mcu_ll.h>
 
 volatile int var;
 
-int main()
-{
-    boardInit();
-    while (1) {
-        var ^= 0x55;
-    }
+int main() {
+  boardInit();
+  while (1) {
+    var = var ^ 0x55;
+  }
 }

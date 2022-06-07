@@ -46,6 +46,13 @@
       "problemMatcher": "$gcc"
     },
     {
+      "label": "build LPC845 QFP48 empty project",
+      "type": "shell",
+      "command": "make PROJECT=LPC845M301BD48 -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
       "label": "build PC example",
       "type": "shell",
       "command": "make PROJECT=PC config=debug -j20",

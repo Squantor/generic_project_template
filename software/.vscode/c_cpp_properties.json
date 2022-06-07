@@ -3,14 +3,14 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/LPC844M201BD64/inc",
+                "${workspaceFolder}/LPC845M301BD48/inc",
                 "${workspaceFolder}/libMcuLL/inc/",
                 "${workspaceFolder}/squantorLibC/inc/",
                 "${workspaceFolder}/squantorLibEmbedded/inc/",
                 "${workspaceFolder}/squantorLibEmbedded/inc/cortexM"
             ],
             "defines": [
-                "MCU_LPC844M201BD64",
+                "MCU_LPC845M301BD48",
                 "DEBUG"
             ],
             "browse": {

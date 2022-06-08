@@ -3,7 +3,7 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/LPC1114BD48_323/inc",
+                "${workspaceFolder}/LPC1125BD48_303/inc",
                 "${workspaceFolder}/libMcuLL/inc/",
                 "${workspaceFolder}/squantorLibC/inc/",
                 "${workspaceFolder}/squantorLibEmbedded/inc/",

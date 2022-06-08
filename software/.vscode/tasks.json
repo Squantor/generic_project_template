@@ -6,7 +6,7 @@
     {
       "label": "build LPC812 empty project",
       "type": "shell",
-      "command": "make PROJECT=LPC812 -j20",
+      "command": "make PROJECT=LPC812M101DH20 -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
@@ -20,7 +20,7 @@
     {
       "label": "build LPC824 empty project",
       "type": "shell",
-      "command": "make PROJECT=LPC824 -j20",
+      "command": "make PROJECT=LPC824M201HI33 -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },

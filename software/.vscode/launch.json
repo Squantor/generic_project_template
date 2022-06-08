@@ -7,7 +7,7 @@
     {
       "name": "Debug debug LPC812 empty",
       "cwd": "${workspaceRoot}",
-      "executable": "${workspaceFolder}/bin/LPC812/debug/LPC812.elf",
+      "executable": "${workspaceFolder}/bin/LPC812M101DH20/debug/LPC812M101DH20.elf",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "bmp",
@@ -43,7 +43,7 @@
     {
       "name": "Debug debug LPC824 empty",
       "cwd": "${workspaceRoot}",
-      "executable": "${workspaceFolder}/bin/LPC824/debug/LPC824.elf",
+      "executable": "${workspaceFolder}/bin/LPC824M201HI33/debug/LPC824M201HI33.elf",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "bmp",

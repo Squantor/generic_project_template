@@ -8,7 +8,7 @@
 BASE_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
 # include all libraries
-include $(BASE_DIR)/../squantorLibC/squantorLibC.mak
+include $(BASE_DIR)/squantorLibC/squantorLibC.mak
 
 
 # --- nothing user definable below ---

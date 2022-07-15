@@ -2,7 +2,7 @@
 	path = software/--force
 	url = git@github.com:Squantor/squantorLibC.git
 [submodule "software/squantorLibC"]
-	path = software/squantorLibC
+	path = software/libraries/squantorLibC
 	url = git@github.com:Squantor/squantorLibC.git
 [submodule "software/squantorMinUnit"]
 	path = software/squantorMinUnit

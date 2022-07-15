@@ -12,9 +12,8 @@ Modified with help from: https://github.com/zhmu
 
 #include <PC_bare_syscall.h>
 
-void _exit(int r)
-{
-   syscall1( SYS_exit, r );
-   while(1);
+void _exit(int r) {
+  syscall1(SYS_exit, r);
+  while (1)
+    ;
 }
-

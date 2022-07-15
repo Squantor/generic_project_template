@@ -6,7 +6,4 @@
  */
 #include <board.hpp>
 
-void boardInit(void)
-{
-
-}
+void boardInit(void) {}

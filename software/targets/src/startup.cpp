@@ -9,7 +9,7 @@ For conditions of distribution and use, see LICENSE file
 
 extern int main(void);
 
-#if defined (__cplusplus)
+#if defined(__cplusplus)
 extern "C" {
 #endif
 
@@ -20,49 +20,45 @@ extern uint32_t _end_data;
 extern uint32_t _start_bss;
 extern uint32_t _end_bss;
 extern void _end_stack(void);
-extern void (*__preinit_array_start []) (void);
-extern void (*__preinit_array_end []) (void);
-extern void (*__init_array_start []) (void);
-extern void (*__init_array_end []) (void);
+extern void (*__preinit_array_start[])(void);
+extern void (*__preinit_array_end[])(void);
+extern void (*__init_array_start[])(void);
+extern void (*__init_array_end[])(void);
 
 void Reset_Handler(void);
 
-#if defined (__cplusplus)
-} // extern "C"
+#if defined(__cplusplus)
+}  // extern "C"
 #endif
 
-void Reset_Handler(void) 
-{
-    uint32_t *src, *dst;
+void Reset_Handler(void) {
+  uint32_t *src, *dst;
 
-    /* Copy data section from flash to RAM */
-    src = &_data_flash;
-    dst = &_start_data;
-    while (dst < &_end_data)
-        *dst++ = *src++;
+  /* Copy data section from flash to RAM */
+  src = &_data_flash;
+  dst = &_start_data;
+  while (dst < &_end_data) *dst++ = *src++;
 
-    /* Clear the bss section*/
-    dst = &_start_bss;
-    while (dst < &_end_bss)
-        *dst++ = 0;
-        
-    /* execute c++ constructors */
-    auto preInitFunc = __preinit_array_start;
-    while(preInitFunc < __preinit_array_end)
-    {
-        (*preInitFunc)();
-        preInitFunc++;
-    }
-    auto initFunc = __init_array_start;
-    while(initFunc < __init_array_end)
-    {
-        (*initFunc)();
-        initFunc++;
-    }
+  /* Clear the bss section*/
+  dst = &_start_bss;
+  while (dst < &_end_bss) *dst++ = 0;
 
-    main();
-    
-    /* we omit executing destructors so gcc can optimize them away*/
-    
-    while (1);
+  /* execute c++ constructors */
+  auto preInitFunc = __preinit_array_start;
+  while (preInitFunc < __preinit_array_end) {
+    (*preInitFunc)();
+    preInitFunc++;
+  }
+  auto initFunc = __init_array_start;
+  while (initFunc < __init_array_end) {
+    (*initFunc)();
+    initFunc++;
+  }
+
+  main();
+
+  /* we omit executing destructors so gcc can optimize them away*/
+
+  while (1)
+    ;
 }

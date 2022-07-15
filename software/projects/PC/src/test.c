@@ -8,8 +8,7 @@ For conditions of distribution and use, see LICENSE file
 #include <stdio.h>
 #include <test.h>
 
-int testfunc(void)
-{
-    printf("Test function from %s %d\n", __FILE__, __LINE__);
-    return 0;
+int testfunc(void) {
+  printf("Test function from %s %d\n", __FILE__, __LINE__);
+  return 0;
 }

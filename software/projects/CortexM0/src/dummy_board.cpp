@@ -6,6 +6,4 @@ For conditions of distribution and use, see LICENSE file
 */
 #include <board.hpp>
 
-void boardInit(void)
-{
-}
+void boardInit(void) {}

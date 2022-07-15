@@ -5,7 +5,7 @@ Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
 
-#define __SYSCALL(x,y)
+#define __SYSCALL(x, y)
 
 #define SYS_read 0
 #define SYS_write 1
@@ -342,4 +342,3 @@ For conditions of distribution and use, see LICENSE file
 #define SYS_statx 332
 
 #undef __SYSCALL
-

@@ -14,20 +14,17 @@
 volatile int var;
 volatile bool pinmode;
 
-extern "C" 
-{
-    void SysTick_Handler(void)
-    {
-        gpioPortToggle(GPIO, PORT_LED, 1 << PIN_LED);
-    }
+extern "C" {
+void SysTick_Handler(void) {
+  gpioPortToggle(GPIO, PORT_LED, 1 << PIN_LED);
+}
 }
 
-int main()
-{
-    pinmode = false;
-    boardInit();
-    while (1) {
-        var = var ^ 0x55;
-        __NOP();
-    }
+int main() {
+  pinmode = false;
+  boardInit();
+  while (1) {
+    var = var ^ 0x55;
+    __NOP();
+  }
 }

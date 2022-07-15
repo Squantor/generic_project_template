@@ -31,6 +31,6 @@ void boardInit(void) {
 
   gpioSetPinDIROutput(GPIO, PORT_LED, PIN_LED);
   gpioPinWrite(GPIO, PORT_LED, PIN_LED, 0);
-  
+
   SysTick_Config(CLOCK_AHB / TICKS_PER_S);
 }

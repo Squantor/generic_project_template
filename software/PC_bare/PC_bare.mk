@@ -2,18 +2,21 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# project settings
-#
-# Version: 20201220
-
-include squantorLibC/squantorLibC.mk
+# Version: 202020715
 
 # project settings
-TARGET = PC_bare
+NAME := applicationA
+
+TARGET := PC_bare
+
+# get base path
+BASE := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+
+$(NAME)_LIBS := squantorLibC
 
 # project sources
-FILES += $(PROJECT)/src/main.c
+$(NAME)_FILES += $(BASE)/src/main.c
 
-INCLUDES += -I$(PROJECT)/inc
+$(NAME)_INCLUDES += -I$(BASE)/inc
 
 

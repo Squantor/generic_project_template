@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20210425
+# Version: 20220715
 
 # User definable settings are here
 
@@ -19,6 +19,12 @@ VERBOSE ?= 0
 
 # get the root directory of the build, used below for reproducable builds
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+
+# collect all libraries
+LIBRARIES :=
+ifneq ("$(wildcard libraries/libraries.mak)","")
+include libraries/libraries.mak
+endif
 
 # Project settings like sources and target specifics
 ifndef PROJECT
@@ -37,6 +43,12 @@ $(error Target is not defined!)
 else
 include targets/$(TARGET).mk
 endif
+
+# --- collect all files ---
+INCLUDES += $(foreach library,$($(NAME)_LIBS),$($(library)_LIB_INCLUDES))
+FILES += $(foreach file,$($(NAME)_LIBS),$($(file)_LIB_FILES))
+INCLUDES += $($(NAME)_INCLUDES)
+FILES += $($(NAME)_FILES)
 
 # --- build engine ---
 

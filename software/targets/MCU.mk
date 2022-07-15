@@ -4,19 +4,14 @@
 
 # settings for the MCU target
 #
-# Version: 20201220
+# Version: 20220715
 
 ifndef $(NAME)_MCU
 $(error Project MCU is not defined!)
 else
 MCU := $($(NAME)_MCU)
 endif
-
-ifndef MCU
-$(error MCU is not defined!)
-else
 include targets/$(MCU).mk
-endif
 
 # valid configurations like debug, release, test, define them here
 CONFIGS = debug release

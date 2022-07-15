@@ -22,7 +22,7 @@ PROJ_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 $(NAME)_FILES := $(PROJ_DIR)/src/main.cpp \
 $(PROJ_DIR)/src/$(BOARD).cpp
 
-$(NAME)_INCLUDES := -I$(PROJECT)/inc
+$(NAME)_INCLUDES := -I$(PROJ_DIR)/inc
 
 # --- nothing user definable below ---
 PROJECTS += $(NAME)

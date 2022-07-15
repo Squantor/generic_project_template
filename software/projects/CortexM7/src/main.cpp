@@ -7,9 +7,8 @@ For conditions of distribution and use, see LICENSE file
 
 volatile int var;
 
-int main()
-{
-    while (1) {
-        var ^= 0x55;
-    }
+int main() {
+  while (1) {
+    var = var ^ 0x55;
+  }
 }

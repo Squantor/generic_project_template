@@ -10,6 +10,7 @@ BASE_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 # include all libraries
 include $(BASE_DIR)/squantorLibC/squantorLibC.mak
 include $(BASE_DIR)/libMcuLL/libMcuLL.mak
-
+include $(BASE_DIR)/squantorLibEmbedded/squantorLibEmbedded.mak
+include $(BASE_DIR)/squantorLibEmbedded/squantorLibEmbeddedCortexM.mak
 
 # --- nothing user definable below ---

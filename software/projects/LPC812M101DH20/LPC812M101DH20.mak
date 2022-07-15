@@ -5,10 +5,10 @@
 # Version: 202220715
 
 # project settings
-NAME := CortexM0
+NAME := LPC812M101DH20_empty
 BOARD := dummy_board
 $(NAME)_TARGET := MCU
-$(NAME)_MCU := CortexM0
+$(NAME)_MCU := LPC812M101DH20
 
 $(NAME)_LIBS := libMcuLL squantorLibC
 

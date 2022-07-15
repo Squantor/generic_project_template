@@ -5,10 +5,10 @@
 # Version: 202220715
 
 # project settings
-NAME := CortexM0
+NAME := CortexM4
 BOARD := dummy_board
 $(NAME)_TARGET := MCU
-$(NAME)_MCU := CortexM0
+$(NAME)_MCU := CortexM4
 
 $(NAME)_LIBS := libMcuLL squantorLibC
 

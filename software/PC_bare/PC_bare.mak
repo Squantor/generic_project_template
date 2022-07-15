@@ -7,10 +7,10 @@
 # project settings
 NAME := PC_bare
 
-TARGET := PC_bare
-
 # current makefile base dir relative to Makefile
 BASE_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+
+$(NAME)_TARGET := PC_bare
 
 $(NAME)_LIBS := squantorLibC
 
@@ -20,4 +20,5 @@ $(NAME)_FILES += $(BASE_DIR)/src/main.c
 $(NAME)_INCLUDES += -I$(BASE_DIR)/inc
 
 # --- nothing user definable below ---
-include $(BASE_DIR)/PC_bare_rules.mk
+PROJECTS += $(NAME)
+include $(BASE_DIR)/PC_bare_rules.mak

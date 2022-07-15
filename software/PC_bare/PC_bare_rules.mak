@@ -6,6 +6,7 @@
 #
 # Version: 20210207
 
+# make sure that rules here are prefixed by dot, they will get executed first instead of the "all" rule
 # always executed by build engine
 pre-build:
 	@echo executing pre build steps

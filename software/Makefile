@@ -17,6 +17,11 @@ VERBOSE ?= 0
 
 # --- nothing user definable below ---
 
+# catch all rule to prevent confusion, Make uses the first rule as the default rule
+# in our case, we include additional rules so to provent any confusion we warn for this
+default_rule:
+	@echo "run with make PROJECT=project all, where PROJECT is optional"
+
 # get the root directory of the build, used below for reproducable builds
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -26,22 +31,26 @@ ifneq ("$(wildcard libraries/libraries.mak)","")
 include libraries/libraries.mak
 endif
 
-# Project settings like sources and target specifics
+# collect all project information
 ifndef PROJECT
 $(error no PROJECT defined!)
-else
-ifneq ("$(wildcard $(PROJECT)/$(PROJECT).mk)","")
-include $(PROJECT)/$(PROJECT).mk
-else
-$(error $(PROJECT)/$(PROJECT).mk does not exist!)
 endif
+PROJECTS :=
+ifneq ("$(wildcard projects/projects.mak)","")
+include projects/projects.mak
 endif
+# check if PROJECT exists in PROJECTS
+ifeq (, $(findstring $(PROJECT),$(PROJECTS)))
+$(error Unknown project $(PROJECT)!)
+endif
+
+
 # Target definition handling
 
-ifndef TARGET
+ifndef $(PROJECT)_TARGET
 $(error Target is not defined!)
 else
-include targets/$(TARGET).mk
+include targets/$($(PROJECT)_TARGET).mk
 endif
 
 # --- collect all files ---
@@ -57,7 +66,7 @@ FILES += $($(PROJECT)_FILES)
 CONFIG ?= $(firstword $(CONFIGS))
 # check if it is a valid configuration
 ifeq (, $(findstring $(CONFIG),$(CONFIGS)))
-$(error Unknown configuration $(CONFIG)!)
+#$(error Unknown configuration $(CONFIG)!)
 endif
 
 # transform build specific variables to variables used by the build
@@ -116,10 +125,6 @@ main-build: pre-build $(EXECUTABLE)
 	
 .PHONY: main-build
 
-main-build: pre-build $(EXECUTABLE)
-
-.PHONY: pre-build
-
 -include $(DEPS)
 
 $(DOC_PATH)/build-tag:
@@ -174,7 +179,3 @@ clean: $(BINDEPS) $(DOCDEPS)
 # Useful for debugging
 print-%: ; @echo $*=$($*)
 .Phony: print-%
-
-
-
-

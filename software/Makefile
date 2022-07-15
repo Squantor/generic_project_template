@@ -164,6 +164,11 @@ clean: $(BINDEPS) $(DOCDEPS)
 	$(C)$(RM) -rf $(DOC_ROOT)
 .PHONY: clean
 
+# utility rules
+ifneq ("$(wildcard makefiles/util.mak)","")
+include makefiles/util.mak
+endif
+
 # Function used to check variables. Use on the command line:
 # make print-VARNAME
 # Useful for debugging

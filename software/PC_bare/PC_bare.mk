@@ -19,4 +19,5 @@ $(NAME)_FILES += $(BASE_DIR)/src/main.c
 
 $(NAME)_INCLUDES += -I$(BASE_DIR)/inc
 
-
+# --- nothing user definable below ---
+include $(BASE_DIR)/PC_bare_rules.mk

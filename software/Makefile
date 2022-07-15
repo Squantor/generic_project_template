@@ -45,6 +45,7 @@ include targets/$(TARGET).mk
 endif
 
 # --- collect all files ---
+# TODO, make INCLUDES and FILES generated here, dont let any library or project touch these
 INCLUDES += $(foreach library,$($(PROJECT)_LIBS),$($(library)_LIB_INCLUDES))
 FILES += $(foreach file,$($(PROJECT)_LIBS),$($(file)_LIB_FILES))
 INCLUDES += $($(PROJECT)_INCLUDES)
@@ -167,9 +168,6 @@ clean: $(BINDEPS) $(DOCDEPS)
 	$(C)$(RM) -rf $(OBJ_ROOT)
 	$(C)$(RM) -rf $(DOC_ROOT)
 .PHONY: clean
-
-# project specific makefile rules
-include $(PROJECT)/$(PROJECT)_rules.mk
 
 # Function used to check variables. Use on the command line:
 # make print-VARNAME

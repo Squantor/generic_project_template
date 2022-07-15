@@ -5,17 +5,19 @@
 # Version: 202020715
 
 # project settings
-NAME := PC_bare
+NAME := PC
 
 # current makefile base dir relative to Makefile
 PROJ_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
-$(NAME)_TARGET := PC_bare
+$(NAME)_TARGET := PC
 
-$(NAME)_LIBS := squantorLibC
+$(NAME)_LIBS :=
 
 # project sources
-$(NAME)_FILES := $(PROJ_DIR)/src/main.c
+$(NAME)_FILES := $(PROJ_DIR)/src/main.cpp \
+$(PROJ_DIR)/src/test.cpp \
+$(PROJ_DIR)/src/test.c
 
 $(NAME)_INCLUDES := -I$(PROJ_DIR)/inc
 

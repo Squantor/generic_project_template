@@ -17,6 +17,13 @@ VERBOSE ?= 0
 
 # --- nothing user definable below ---
 
+# --- useful variables ---
+
+DATESTRING := $(shell date +%Y%m%d%H%M%S)
+# get the root directory of the build, used below for reproducable builds
+ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+
+
 # Verbosity handling
 ifeq ($(VERBOSE),1)
   C = 
@@ -25,14 +32,6 @@ else
   C = @
   U = @echo
 endif
-
-# catch all rule to prevent confusion, Make uses the first rule as the default rule
-# in our case, we include additional rules so to provent any confusion we warn for this
-default_rule:
-	@echo "run with make PROJECT=project all, where PROJECT is optional"
-
-# get the root directory of the build, used below for reproducable builds
-ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 # collect all libraries
 LIBRARIES :=
@@ -55,7 +54,6 @@ endif
 
 
 # Target definition handling
-
 ifndef $(PROJECT)_TARGET
 #$(error Target is not defined!)
 else
@@ -113,13 +111,9 @@ DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
 DOCDEPS += $(DOC_PATH)/build-tag
 
-all: post-build
+all: $(EXECUTABLE)
 
 .PHONY: all
-
-main-build: pre-build $(EXECUTABLE)
-	
-.PHONY: main-build
 
 -include $(DEPS)
 

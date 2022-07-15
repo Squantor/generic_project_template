@@ -2,19 +2,29 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# project settings
-#
-# Version: 20200625
+# Version: 202020715
 
 # project settings
-MCU = CortexM0
-TARGET = MCU
-BOARD = dummy_board
+NAME := CortexM0
+
+BOARD := dummy_board
+
+$(NAME)_TARGET := MCU
+
+$(NAME)_MCU := CortexM0
+
+$(NAME)_LIBS := libMcuLL
+
+# current makefile base dir relative to Makefile
+PROJ_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
 # project sources
-FILES += $(PROJECT)/src/main.cpp \
-$(PROJECT)/src/$(BOARD).cpp
+$(NAME)_FILES := $(PROJ_DIR)/src/main.cpp \
+$(PROJ_DIR)/src/$(BOARD).cpp
 
-INCLUDES += -IlibMcuLL/inc -I$(PROJECT)/inc
+$(NAME)_INCLUDES := -I$(PROJECT)/inc
 
-
+# --- nothing user definable below ---
+PROJECTS += $(NAME)
+$(NAME)_PROJECT_ROOT := $(PROJ_DIR)
+$(NAME)_BOARD := $(BOARD)

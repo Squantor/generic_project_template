@@ -6,6 +6,12 @@
 #
 # Version: 20201220
 
+ifndef $(NAME)_MCU
+$(error Project MCU is not defined!)
+else
+MCU := $($(NAME)_MCU)
+endif
+
 ifndef MCU
 $(error MCU is not defined!)
 else

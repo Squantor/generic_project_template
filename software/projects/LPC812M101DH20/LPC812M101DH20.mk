@@ -2,9 +2,10 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
+# Version: 202020715
+
 # project settings
-#
-# Version: 20210113
+NAME := LPC812M101DH20_empty
 
 #additional library includes
 include libMcuLL/libMcuLL.mk

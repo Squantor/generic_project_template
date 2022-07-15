@@ -9,6 +9,7 @@ BASE_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
 # include all libraries
 include $(BASE_DIR)/PC_bare/PC_bare.mak
+include $(BASE_DIR)/PC/PC.mak
 
 
 # --- nothing user definable below ---

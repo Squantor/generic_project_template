@@ -28,4 +28,3 @@ generate-diassembly: $(EXECUTABLE) $(PROJ_DIR)/disassemblies/build-tag
 $(PROJ_DIR)/disassemblies/build-tag: 
 	$(C)$(MKDIR) -p $(PROJ_DIR)/disassemblies
 	$(C)$(TOUCH) $@
-

@@ -17,6 +17,15 @@ VERBOSE ?= 0
 
 # --- nothing user definable below ---
 
+# Verbosity handling
+ifeq ($(VERBOSE),1)
+  C = 
+  U = @true
+else
+  C = @
+  U = @echo
+endif
+
 # catch all rule to prevent confusion, Make uses the first rule as the default rule
 # in our case, we include additional rules so to provent any confusion we warn for this
 default_rule:
@@ -48,7 +57,7 @@ endif
 # Target definition handling
 
 ifndef $(PROJECT)_TARGET
-$(error Target is not defined!)
+#$(error Target is not defined!)
 else
 include targets/$($(PROJECT)_TARGET).mk
 endif
@@ -103,15 +112,6 @@ OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
 DOCDEPS += $(DOC_PATH)/build-tag
-
-# Verbosity handling
-ifeq ($(VERBOSE),1)
-  C = 
-  U = @true
-else
-  C = @
-  U = @echo
-endif
 
 all: post-build
 

@@ -45,10 +45,10 @@ include targets/$(TARGET).mk
 endif
 
 # --- collect all files ---
-INCLUDES += $(foreach library,$($(NAME)_LIBS),$($(library)_LIB_INCLUDES))
-FILES += $(foreach file,$($(NAME)_LIBS),$($(file)_LIB_FILES))
-INCLUDES += $($(NAME)_INCLUDES)
-FILES += $($(NAME)_FILES)
+INCLUDES += $(foreach library,$($(PROJECT)_LIBS),$($(library)_LIB_INCLUDES))
+FILES += $(foreach file,$($(PROJECT)_LIBS),$($(file)_LIB_FILES))
+INCLUDES += $($(PROJECT)_INCLUDES)
+FILES += $($(PROJECT)_FILES)
 
 # --- build engine ---
 

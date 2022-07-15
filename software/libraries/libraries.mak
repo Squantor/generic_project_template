@@ -4,11 +4,11 @@
 
 # Version: 20220715
 
-# variables used in settings
-BASE := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+# current makefile base dir relative to Makefile
+BASE_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
 # include all libraries
-include $(BASE)/../squantorLibC/squantorLibC.mak
+include $(BASE_DIR)/../squantorLibC/squantorLibC.mak
 
 
 # --- nothing user definable below ---

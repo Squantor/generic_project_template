@@ -21,4 +21,5 @@ $(NAME)_INCLUDES += -I$(BASE_DIR)/inc
 
 # --- nothing user definable below ---
 PROJECTS += $(NAME)
+$(NAME)_PROJECT_ROOT := $(BASE_DIR)
 include $(BASE_DIR)/PC_bare_rules.mak

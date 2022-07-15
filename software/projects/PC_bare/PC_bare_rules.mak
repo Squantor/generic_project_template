@@ -21,12 +21,12 @@ post-build: main-build generate-diassembly
 DATESTRING := $(shell date +%Y%m%d%H%M%S)
 
 # generate disassembly of currently built executable
-generate-diassembly: $(EXECUTABLE) $(PROJECT)/disassemblies/build-tag
-	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h --no-show-raw-insn --no-addresses -S "$(EXECUTABLE)" > "$(PROJECT)/disassemblies/$(PROJECT)_$(DATESTRING).lss"
+generate-diassembly: $(EXECUTABLE) $($(NAME)_PROJECT_ROOT)/disassemblies/build-tag
+	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h --no-show-raw-insn --no-addresses -S "$(EXECUTABLE)" > "$($(NAME)_PROJECT_ROOT)/disassemblies/$(PROJECT)_$(DATESTRING).lss"
 
 .PHONY: generate-diassembly
 
-$(PROJECT)/disassemblies/build-tag: 
-	$(C)$(MKDIR) -p $(PROJECT)/disassemblies
+$($(NAME)_PROJECT_ROOT)/disassemblies/build-tag: 
+	$(C)$(MKDIR) -p $($(NAME)_PROJECT_ROOT)/disassemblies
 	$(C)$(TOUCH) $@
 

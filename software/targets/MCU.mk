@@ -6,10 +6,10 @@
 #
 # Version: 20220715
 
-ifndef $(NAME)_MCU
+ifndef $(PROJECT)_MCU
 $(error Project MCU is not defined!)
 else
-MCU := $($(NAME)_MCU)
+MCU := $($(PROJECT)_MCU)
 endif
 include targets/$(MCU).mk
 

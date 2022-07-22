@@ -37,3 +37,13 @@ projects:
 libraries:
 	@echo available libraries: $(LIBRARIES)
 .PHONY: libraries
+
+help:
+	@echo to build a project use \"make PROJECT=project\"
+	@echo for a list of all projects run \"make projects\"
+	@echo for a list of available libraries rune \"make libraries\"
+	@echo use VERBOSE=1 to enable verbose output
+	@echo additional commands are:
+	@echo \"make generate-disassembly\" for generating disassembly of the program
+
+.PHONY: help

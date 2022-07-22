@@ -31,11 +31,11 @@ tpwrenable:
 .PHONY: tpwrenable
 
 projects:
-	@echo available projects: $(PROJECTS)
+	@/bin/echo -e "available projects:\n $(addsuffix \n,$(PROJECTS))"
 .PHONY: projects
 
 libraries:
-	@echo available libraries: $(LIBRARIES)
+	@/bin/echo -e "available libraries:\n $(addsuffix \n,$(LIBRARIES))"
 .PHONY: libraries
 
 help:

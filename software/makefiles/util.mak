@@ -3,7 +3,7 @@
 # For conditions of distribution and use, see LICENSE file
 
 #
-# Version: 20220715
+# Version: 20220722
 
 # various utilities present here
 
@@ -29,3 +29,11 @@ tpwrdisable:
 tpwrenable:
 	$(TOOLCHAIN_PREFIX)$(GDB) -x ./gdb_scripts/bmp_tpwr_enable.txt
 .PHONY: tpwrenable
+
+projects:
+	@echo available projects: $(PROJECTS)
+.PHONY: projects
+
+libraries:
+	@echo available libraries: $(LIBRARIES)
+.PHONY: libraries

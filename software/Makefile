@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20220715
+# Version: 20220902
 
 # User definable settings are here
 
@@ -48,7 +48,7 @@ ifneq ("$(wildcard projects/projects.mak)","")
 include projects/projects.mak
 endif
 # check if PROJECT exists in PROJECTS
-ifeq (, $(findstring $(PROJECT),$(PROJECTS)))
+ifeq (, $(filter $(PROJECT),$(PROJECTS)))
 $(error Unknown project $(PROJECT)!)
 endif
 

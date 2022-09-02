@@ -41,6 +41,13 @@ settings.json
 *.tmp
 *.bak
 _autosave*
+fp-info-cache
+*-cache.lib
+
+# kicad 6 temporaries and local settings
+*-backups/
+*.kicad_prl
+\#auto_saved_files\#
 
 # kicad outputs
 plots/

@@ -62,14 +62,14 @@
     {
       "label": "build LPC1114/323 QFP48 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC1114BD48_323 -j20",
+      "command": "bear -- make PROJECT=LPC1114BD48_323_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC1125/303 QFP48 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC1125BD48_303 -j20",
+      "command": "bear -- make PROJECT=LPC1125BD48_303_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },

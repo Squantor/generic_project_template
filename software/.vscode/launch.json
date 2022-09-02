@@ -169,7 +169,7 @@
     {
       "name": "Debug debug LPC1125/303 PQFP48 empty project",
       "cwd": "${workspaceRoot}",
-      "executable": "${workspaceFolder}/bin/LPC1125BD48_303/debug/LPC1125BD48_303.elf",
+      "executable": "${workspaceFolder}/bin/LPC1125BD48_303_empty/debug/LPC1125BD48_303_empty.elf",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "bmp",
@@ -178,7 +178,7 @@
       "device": "LPC1125",
       "BMPGDBSerialPort": "/dev/ttyACM0",
       "runToEntryPoint": "main",
-      "preLaunchCommands": [],
+      "preLaunchCommands": ["monitor tpwr enable", "shell sleep 1"],
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC1125/303 QFP48 empty project",

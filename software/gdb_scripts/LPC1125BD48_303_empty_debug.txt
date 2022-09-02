@@ -1,13 +1,13 @@
 set print pretty on
 set architecture armv6
-file bin/LPC1125/debug/LPC1125.elf
+file bin/LPC1125BD48_303_empty/debug/LPC1125BD48_303_empty.elf
 target extended-remote /dev/ttyACM0
 shell sleep 1
 monitor swdp_scan
 attach 1
 set mem inaccessible-by-default off
 set {int}0x40048000 = 2
-load bin/LPC1125/debug/LPC1125.elf
+load bin/LPC1125BD48_303_empty/debug/LPC1125BD48_303_empty.elf
 set {int}0x40048000 = 2
 compare-sections
 b main

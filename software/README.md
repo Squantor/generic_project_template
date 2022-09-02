@@ -57,11 +57,5 @@ The templates have a few dependencies that are automatically cloned when you do 
 To use the software you need the following hardware:
 * [Black magic probe](https://github.com/blacksphere/blackmagic)
 * gnu make
-* [bear]() for generating compilation database to be used by vscode intellisense
-* visual studio code with c/c++ language support and [Cortex-debug]() for debugging embedded targets
-# Additional information
-If the project needs further explanation like commands, theory of operation or something else, Describe it here.
-# TODO
-Open tasks still to complete.
-* completing this readme
-
+* [bear](https://github.com/rizsotto/Bear) for generating compilation database to be used by vscode intellisense
+* [Visual Studio Code](https://code.visualstudio.com/) with c/c++ language support and [Cortex-debug](https://github.com/Marus/cortex-debug) for debugging embedded targets

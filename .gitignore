@@ -27,6 +27,7 @@ bin/
 # miscellanious generated files
 *.log
 disassemblies/
+compile_commands.json
 
 # doxygen output
 doxyOutput/

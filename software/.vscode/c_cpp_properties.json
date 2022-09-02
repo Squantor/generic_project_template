@@ -1,29 +1,14 @@
 {
-    "configurations": [
-        {
-            "name": "Linux",
-            "includePath": [
-                "${workspaceFolder}/LPC1125BD48_303/inc",
-                "${workspaceFolder}/libMcuLL/inc/",
-                "${workspaceFolder}/squantorLibC/inc/",
-                "${workspaceFolder}/squantorLibEmbedded/inc/",
-                "${workspaceFolder}/squantorLibEmbedded/inc/cortexM"
-            ],
-            "defines": [
-                "MCU_LPC845M301BD48",
-                "DEBUG"
-            ],
-            "browse": {
-                "limitSymbolsToIncludedHeaders": false,
-                "path": [
-                    "${workspaceFolder}/**"
-                ]
-            },
-            "compilerPath": "/home/abilos/programs/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gcc",
-            "cStandard": "c11",
-            "cppStandard": "c++20",
-            "intelliSenseMode": "gcc-x64"
-        }
-    ],
-    "version": 4
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [],
+      "defines": [],
+      "browse": {},
+      "cStandard": "gnu17",
+      "cppStandard": "gnu++20",
+      "compileCommands": "${workspaceFolder}/compile_commands.json"
+    }
+  ],
+  "version": 4
 }

@@ -41,14 +41,14 @@
     {
       "label": "build LPC844 QFP64 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC844M201BD64 -j20",
+      "command": "bear -- make PROJECT=LPC844M201BD64_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC845 QFP48 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC845M301BD48 -j20",
+      "command": "bear -- make PROJECT=LPC845M301BD48_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },

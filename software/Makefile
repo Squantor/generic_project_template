@@ -17,6 +17,8 @@ VERBOSE ?= 0
 
 # --- nothing user definable below ---
 
+.DEFAULT_GOAL := all
+
 # --- useful variables ---
 
 DATESTRING := $(shell date +%Y%m%d%H%M%S)
@@ -111,9 +113,13 @@ DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
 DOCDEPS += $(DOC_PATH)/build-tag
 
-all: $(EXECUTABLE)
+all: executable
 
 .PHONY: all
+
+executable: $(EXECUTABLE)
+
+.PHONY: executable
 
 -include $(DEPS)
 

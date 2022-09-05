@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20220902
+# Version: 20220905
 
 # User definable settings are here
 
@@ -113,7 +113,7 @@ DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
 DOCDEPS += $(DOC_PATH)/build-tag
 
-all: executable
+all: | $(PROJECT)-pre-build executable $(PROJECT)-post-build
 
 .PHONY: all
 

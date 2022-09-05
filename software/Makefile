@@ -24,7 +24,10 @@ VERBOSE ?= 0
 DATESTRING := $(shell date +%Y%m%d%H%M%S)
 # get the root directory of the build, used below for reproducable builds
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-
+# root paths for various outputs
+DOC_ROOT := doxyOutput
+BIN_ROOT := bin
+OBJ_ROOT := build
 
 # Verbosity handling
 ifeq ($(VERBOSE),1)
@@ -92,11 +95,6 @@ CFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 CXXFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 ASMFLAGS += -fdebug-prefix-map=$(ROOT_DIR)=.
 
-# root paths for various outputs
-DOC_ROOT := doxyOutput
-BIN_ROOT := bin
-OBJ_ROOT := build
-
 # for a multi project build pipeline
 ifdef PROJECT
 DOC_PATH := $(DOC_ROOT)/$(PROJECT)
@@ -112,6 +110,8 @@ OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
 DOCDEPS += $(DOC_PATH)/build-tag
+LIBRARIES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
+
 
 all: | $(PROJECT)-pre-build executable $(PROJECT)-post-build
 

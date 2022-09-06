@@ -140,7 +140,7 @@ doc: $(DOCDEPS)
 	$(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
 .PHONY: doc
 
-$(EXECUTABLE): $(OBJECTS)
+$(EXECUTABLE): | $(BINDEPS) $(LIBRARIES) $(OBJECTS)
 	$(U) "Linking $(EXECUTABLE)"
 	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBS)
 	$(C)date >> $(SIZELOG_PATH)size$(CONFIG).log
@@ -148,17 +148,21 @@ $(EXECUTABLE): $(OBJECTS)
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
 
-$(OBJ_PATH)/%.c.o: %.c $(BINDEPS)
+$(BIN_PATH)/%.a: 
+	echo building $@
+	touch $@
+
+$(OBJ_PATH)/%.c.o: %.c
 	$(U) "C   $(basename $(notdir $@))"
 	$(C)$(MKDIR) -p $(dir $@) 
 	$(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(CFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
-$(OBJ_PATH)/%.cpp.o: %.cpp $(BINDEPS)
+$(OBJ_PATH)/%.cpp.o: %.cpp
 	$(U) "C++ $(basename $(notdir $@))"
 	$(C)$(MKDIR) -p $(dir $@) 
 	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
-$(OBJ_PATH)/%.s.o: %.s $(BINDEPS)
+$(OBJ_PATH)/%.s.o: %.s
 	$(U) "ASM $(basename $(notdir $@))"
 	$(C)$(MKDIR) -p $(dir $@) 
 	$(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(ASMFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<

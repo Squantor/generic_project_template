@@ -110,6 +110,7 @@ OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 DEPS = $(OBJECTS:.o=.d)
 BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
 DOCDEPS += $(DOC_PATH)/build-tag
+# create lists of prerequisites for each library
 LIBRARIES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
 
 
@@ -149,7 +150,7 @@ $(EXECUTABLE): | $(BINDEPS) $(LIBRARIES) $(OBJECTS)
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
 
 $(BIN_PATH)/%.a: 
-	echo building $@
+	echo building $@ with files $($*_LIB_FILES)
 	touch $@
 
 $(OBJ_PATH)/%.c.o: %.c

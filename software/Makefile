@@ -68,7 +68,7 @@ endif
 # --- collect all files ---
 # TODO, make INCLUDES and FILES generated here, dont let any library or project touch these
 INCLUDES += $(foreach library,$($(PROJECT)_LIBS),$($(library)_LIB_INCLUDES))
-FILES += $(foreach file,$($(PROJECT)_LIBS),$($(file)_LIB_FILES))
+# FILES += $(foreach file,$($(PROJECT)_LIBS),$($(file)_LIB_FILES))
 INCLUDES += $($(PROJECT)_INCLUDES)
 FILES += $($(PROJECT)_FILES)
 
@@ -105,16 +105,21 @@ EXECUTABLE := $(BIN_PATH)/$(PROJECT).elf
 SIZELOG_PATH := $($(PROJECT)_PROJECT_ROOT)/
 endif
 
-# create lists of prerequisites for the build
-OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
-DEPS = $(OBJECTS:.o=.d)
-BINDEPS += $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
-DOCDEPS += $(DOC_PATH)/build-tag
+# create file creation prerequisites 
+BINDEPS := $(OBJ_PATH)/build-tag $(BIN_PATH)/build-tag
+DOCDEPS := $(DOC_PATH)/build-tag
+# create lists of prerequisites for the project
+PROJECT_OBJECTS := $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
+OBJECTS := $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
+DEPS := $(OBJECTS:.o=.d)
 # create lists of prerequisites for each library
 LIBRARIES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
+$(foreach library,$($(PROJECT)_LIBS),$(eval OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
+$(foreach library,$($(PROJECT)_LIBS),$(eval $(library)_OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
+$(foreach library,$($(PROJECT)_LIBS),$(eval DEPS := $($(library)_OBJS:.o=.d)))
 
 
-all: | $(PROJECT)-pre-build executable $(PROJECT)-post-build
+all: executable
 
 .PHONY: all
 
@@ -141,17 +146,17 @@ doc: $(DOCDEPS)
 	$(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
 .PHONY: doc
 
-$(EXECUTABLE): | $(BINDEPS) $(LIBRARIES) $(OBJECTS)
+$(EXECUTABLE): $(BINDEPS) $(OBJECTS) $(LIBRARIES)
 	$(U) "Linking $(EXECUTABLE)"
-	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBS)
+	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(PROJECT_OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBRARIES)
 	$(C)date >> $(SIZELOG_PATH)size$(CONFIG).log
 	$(C)$(TOOLCHAIN_PREFIX)$(SIZE) $@ >> $(SIZELOG_PATH)size$(CONFIG).log
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
 	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
 
-$(BIN_PATH)/%.a: 
-	echo building $@ with files $($*_LIB_FILES)
-	touch $@
+$(BIN_PATH)/%.a: $(OBJECTS)
+	$(U) "AR  $(basename $(notdir $@))"
+	$(C)$(TOOLCHAIN_PREFIX)$(AR) rs $@ $($*_OBJECTS)
 
 $(OBJ_PATH)/%.c.o: %.c
 	$(U) "C   $(basename $(notdir $@))"

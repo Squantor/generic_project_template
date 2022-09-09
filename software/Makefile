@@ -17,8 +17,6 @@ VERBOSE ?= 0
 
 # --- nothing user definable below ---
 
-.DEFAULT_GOAL := all
-
 # --- useful variables ---
 
 DATESTRING := $(shell date +%Y%m%d%H%M%S)
@@ -28,6 +26,21 @@ ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 DOC_ROOT := doxyOutput
 BIN_ROOT := bin
 OBJ_ROOT := build
+
+# --- sane defaults ---
+.DEFAULT_GOAL := all
+SHELL := bash
+.ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+
+# change recipe prefix to something more sensible then TAB
+ifeq ($(origin .RECIPEPREFIX), undefined)
+  $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later)
+endif
+.RECIPEPREFIX = >
 
 # Verbosity handling
 ifeq ($(VERBOSE),1)
@@ -130,54 +143,54 @@ executable: $(EXECUTABLE)
 -include $(DEPS)
 
 $(DOC_PATH)/build-tag:
-	$(C)$(MKDIR) -p $(DOC_PATH)
-	$(C)$(TOUCH) $@
+> $(C)$(MKDIR) -p $(DOC_PATH)
+> $(C)$(TOUCH) $@
 
 $(BIN_PATH)/build-tag:
-	$(C)$(MKDIR) -p $(BIN_PATH)
-	$(C)$(TOUCH) $@
+> $(C)$(MKDIR) -p $(BIN_PATH)
+> $(C)$(TOUCH) $@
 
 $(OBJ_PATH)/build-tag:
-	$(C)$(MKDIR) -p $(OBJ_PATH)
-	$(C)$(TOUCH) $@
+> $(C)$(MKDIR) -p $(OBJ_PATH)
+> $(C)$(TOUCH) $@
 
 doc: $(DOCDEPS)
-	$(C)$(MKDIR) -p $(DOC_PATH)
-	$(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
+> $(C)$(MKDIR) -p $(DOC_PATH)
+> $(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
 .PHONY: doc
 
 $(EXECUTABLE): $(BINDEPS) $(OBJECTS) $(LIBRARIES)
-	$(U) "Linking $(EXECUTABLE)"
-	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(PROJECT_OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBRARIES)
-	$(C)date >> $(SIZELOG_PATH)size$(CONFIG).log
-	$(C)$(TOOLCHAIN_PREFIX)$(SIZE) $@ >> $(SIZELOG_PATH)size$(CONFIG).log
-	$(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
-	$(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
+> $(U) "Linking $(EXECUTABLE)"
+> $(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(PROJECT_OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBRARIES)
+> $(C)date >> $(SIZELOG_PATH)size$(CONFIG).log
+> $(C)$(TOOLCHAIN_PREFIX)$(SIZE) $@ >> $(SIZELOG_PATH)size$(CONFIG).log
+> $(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
+> $(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
 
 $(BIN_PATH)/%.a: $(OBJECTS)
-	$(U) "AR  $(basename $(notdir $@))"
-	$(C)$(TOOLCHAIN_PREFIX)$(AR) rs $@ $($*_OBJECTS)
+> $(U) "AR  $(basename $(notdir $@))"
+> $(C)$(TOOLCHAIN_PREFIX)$(AR) rs $@ $($*_OBJECTS)
 
 $(OBJ_PATH)/%.c.o: %.c
-	$(U) "C   $(basename $(notdir $@))"
-	$(C)$(MKDIR) -p $(dir $@) 
-	$(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(CFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
+> $(U) "C   $(basename $(notdir $@))"
+> $(C)$(MKDIR) -p $(dir $@) 
+> $(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(CFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
 $(OBJ_PATH)/%.cpp.o: %.cpp
-	$(U) "C++ $(basename $(notdir $@))"
-	$(C)$(MKDIR) -p $(dir $@) 
-	$(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
+> $(U) "C++ $(basename $(notdir $@))"
+> $(C)$(MKDIR) -p $(dir $@) 
+> $(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
 $(OBJ_PATH)/%.s.o: %.s
-	$(U) "ASM $(basename $(notdir $@))"
-	$(C)$(MKDIR) -p $(dir $@) 
-	$(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(ASMFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
+> $(U) "ASM $(basename $(notdir $@))"
+> $(C)$(MKDIR) -p $(dir $@) 
+> $(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(ASMFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
 clean: $(BINDEPS) $(DOCDEPS)
-	$(U) "Cleaning"
-	$(C)$(RM) -rf $(BIN_ROOT)
-	$(C)$(RM) -rf $(OBJ_ROOT)
-	$(C)$(RM) -rf $(DOC_ROOT)
+> $(U) "Cleaning"
+> $(C)$(RM) -rf $(BIN_ROOT)
+> $(C)$(RM) -rf $(OBJ_ROOT)
+> $(C)$(RM) -rf $(DOC_ROOT)
 .PHONY: clean
 
 # utility rules

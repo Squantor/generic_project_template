@@ -21,16 +21,6 @@ $(PROJ_DIR)/src/test.c
 
 $(NAME)_INCLUDES := -I$(PROJ_DIR)/inc
 
-$(NAME)-pre-build:
-	@echo $(PROJECT) pre build step
-
-.PHONY: $(PROJECT)-pre-build
-
-$(NAME)-post-build:
-	@echo $(PROJECT) post build step
-
-.PHONY: $(PROJECT)-post-build
-
 # --- nothing user definable below ---
 PROJECTS += $(NAME)
 $(NAME)_PROJECT_ROOT := $(PROJ_DIR)

@@ -4,21 +4,10 @@
 
 # settings for the PC target
 #
-# Version: 20200426
+# Version: 20220909
 
 # Tool settings
-MAKE := make
-MKDIR := mkdir
-RM := rm
-TOOLCHAIN_PREFIX := 
-C_COMPILER := gcc
-CXX_COMPILER := g++
-GDB := gdb
-SIZE := size
-AR := ar
-OBJDUMP := objdump
-OBJCOPY := objcopy
-TOUCH := touch
+include targets/TC_local.mak
 
 # valid configurations like debug, release test, etcetera
 CONFIGS = debug release

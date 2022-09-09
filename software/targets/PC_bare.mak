@@ -8,18 +8,7 @@
 # Version: 20201218
 
 # Tool settings
-MAKE := make
-MKDIR := mkdir
-RM := rm
-TOOLCHAIN_PREFIX := 
-C_COMPILER := gcc
-CXX_COMPILER := g++
-GDB := gdb
-SIZE := size
-AR := ar
-OBJDUMP := objdump
-OBJCOPY := objcopy
-TOUCH := touch
+include targets/TC_local.mak
 
 #needed files for this target
 FILES += targets/src/PC_bare_startup.s targets/src/PC_bare_exit.c targets/src/PC_bare_start.c

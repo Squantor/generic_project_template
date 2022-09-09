@@ -4,21 +4,10 @@
 
 # settings for the Cortex-M0+ Core
 #
-# Version: 20200508
+# Version: 20220909
 
 # Tool settings
-MAKE := make
-MKDIR := mkdir
-RM := rm
-TOOLCHAIN_PREFIX := arm-none-eabi-
-C_COMPILER := gcc
-CXX_COMPILER := g++
-GDB := gdb
-SIZE := size
-AR := ar
-OBJDUMP := objdump
-OBJCOPY := objcopy
-TOUCH := touch
+include targets/TC_arm-none-eabi.mak
 
 # Core flags
 CFLAGS += -mcpu=cortex-m0plus -mthumb

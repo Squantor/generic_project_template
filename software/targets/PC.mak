@@ -10,17 +10,20 @@
 include targets/TC_local.mak
 
 # valid configurations like debug, release test, etcetera
-CONFIGS = debug release
+CONFIGS := debug release
 
 #default flags
-CFLAGS = -std=gnu11 -Wall -Wextra -c
-CFLAGS_debug = -O0 -g3
-CFLAGS_release = -O2 -g
-CXXFLAGS = -std=c++20 -Wall -Wextra -c
-CXXFLAGS_debug = -O0 -g3
-CXXFLAGS_release = -O2 -g
-ASMFLAGS = -c -x assembler-with-cpp
+CFLAGS := -std=gnu11 -Wall -Wextra -c
+CFLAGS_debug := -O0 -g3
+CFLAGS_release := -O2 -g
+CXXFLAGS := -std=c++20 -Wall -Wextra -c
+CXXFLAGS_debug := -O0 -g3
+CXXFLAGS_release := -O2 -g
+ASMFLAGS := -c -x assembler-with-cpp
 LDFLAGS +=
+LDSCRIPT :=
 DEFINES_release += -DNDEBUG
 DEFINES_debug += -DDEBUG
 DEFINES +=
+FILES_debug := 
+FILES_rekease := 

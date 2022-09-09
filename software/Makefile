@@ -94,8 +94,8 @@ ifeq (, $(findstring $(CONFIG),$(CONFIGS)))
 #$(error Unknown configuration $(CONFIG)!)
 endif
 
-# transform build specific variables to variables used by the build
-COPYVARS += SOURCE CFLAGS CXXFLAGS INCLUDES LIBS DEFINES
+# transform configuration specific variables to variables used by the build
+COPYVARS := FILES CFLAGS CXXFLAGS DEFINES
 $(foreach V,$(COPYVARS),$(eval $(V) += $$($(V)_$(CONFIG))))
 # specific handling for linker script
 LDFLAGS += $(LDSCRIPT)

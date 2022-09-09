@@ -10,7 +10,7 @@ BOARD := dummy_board
 $(NAME)_TARGET := MCU
 $(NAME)_MCU := CortexM0plus
 
-$(NAME)_LIBS := libMcuLL
+$(NAME)_LIBS := libMcuLL squantorLibC
 
 # current makefile base dir relative to Makefile
 PROJ_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))

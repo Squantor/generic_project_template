@@ -4,7 +4,7 @@
 
 # settings for the LPC812M101JDH20 Microcontroller
 
-# Version: 20200427
+# Version: 20220909
 
 # import compiler settings for the general controller type
-include targets/LPC812.mk
+include targets/LPC812.mak

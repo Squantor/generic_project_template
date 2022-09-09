@@ -4,9 +4,9 @@
 
 # settings for the LPC844M201JBD64 Microcontroller
 #
-# Version: 20210611
+# Version: 20220909
 
 # import compiler settings for the general controller type
-include targets/LPC844.mk
+include targets/LPC844.mak
 
 

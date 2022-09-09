@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20220905
+# Version: 20220909
 
 # User definable settings are here
 
@@ -62,7 +62,7 @@ endif
 ifndef $(PROJECT)_TARGET
 #$(error Target is not defined!)
 else
-include targets/$($(PROJECT)_TARGET).mk
+include targets/$($(PROJECT)_TARGET).mak
 endif
 
 # --- collect all files ---

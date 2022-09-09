@@ -4,10 +4,10 @@
 
 # settings for the a generic Cortex M0+ microcontroller
 
-# Version: 20201220
+# Version: 20220909
 
 # import compiler settings for the core in this microcontroller
-include targets/core_CortexM0plus.mk
+include targets/core_CortexM0plus.mak
 
 # Specific C files and linker scripts
 FILES += targets/src/core_CortexM0plus.cpp targets/src/startup.cpp

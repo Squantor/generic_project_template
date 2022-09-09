@@ -2,12 +2,12 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# settings for the lpc845 Microcontroller
+# settings for the LPC845 Microcontroller
 #
-# Version: 20210108
+# Version: 20220909
 
 # import compiler settings for the core in this microcontroller
-include targets/core_CortexM0plus.mk
+include targets/core_CortexM0plus.mak
 
 # Specific C files and linker scripts
 FILES += targets/src/LPC84X.cpp targets/src/startup_LPC84X.cpp \

@@ -2,10 +2,10 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# settings for the lpc1125 Microcontroller
+# settings for the LPC1114BD48_323 Microcontroller
 #
-# Version: 20210110
+# Version: 20220909
 
 # import compiler settings for the general controller type
-include targets/LPC1114_323.mk
+include targets/LPC1114_323.mak
 

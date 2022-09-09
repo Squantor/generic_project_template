@@ -4,9 +4,9 @@
 
 # settings for the LPC845M301JBD48 Microcontroller
 #
-# Version: 20210108
+# Version: 20220909
 
 # import compiler settings for the general controller type
-include targets/LPC845.mk
+include targets/LPC845.mak
 
 

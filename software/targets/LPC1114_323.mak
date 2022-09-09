@@ -2,12 +2,12 @@
 # Copyright (c) 2021 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# settings for the lpc1125 Microcontroller
+# settings for the LPC1114_323 Microcontroller
 #
-# Version: 20210110
+# Version: 20220909
 
 # import compiler settings for the core in this microcontroller
-include targets/core_CortexM0.mk
+include targets/core_CortexM0.mak
 
 # Specific C files and linker scripts
 # TODO: add ROM patches for divison routines in the startup code

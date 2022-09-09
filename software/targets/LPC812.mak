@@ -4,10 +4,10 @@
 
 # settings for the LPC812 Microcontroller
 
-# Version: 20201220
+# Version: 20220909
 
 # import compiler settings for the core in this microcontroller
-include targets/core_CortexM0plus.mk
+include targets/core_CortexM0plus.mak
 
 # Specific C files and linker scripts
 FILES += targets/src/LPC812.cpp targets/src/startup.cpp

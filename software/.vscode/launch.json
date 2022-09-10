@@ -20,7 +20,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC812 empty project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC812.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC812.svd",
     },
     {
       "name": "Debug debug LPC812 nuclone blinky",
@@ -38,7 +38,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC812 nuclone blinky project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC812.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC812.svd",
     },
     {
       "name": "Debug debug LPC824 empty",
@@ -56,7 +56,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC824 empty project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC824.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC824.svd",
     },
     {
       "name": "Debug debug LPC824 QFN33 nuclone blinky",
@@ -74,7 +74,25 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC824 QFN33 nuclone blinky project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC824.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC824.svd",
+    },
+    {
+      "name": "Debug release size LPC824 QFN33 nuclone blinky",
+      "cwd": "${workspaceRoot}",
+      "executable": "${workspaceFolder}/bin/LPC824M201HI33_blinky/release_size/LPC824M201HI33_blinky.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "bmp",
+      "interface": "swd",
+      "targetId": 1,
+      "device": "LPC824",
+      "BMPGDBSerialPort": "/dev/ttyACM0",
+      "runToEntryPoint": "main",
+      "preLaunchCommands": ["monitor tpwr enable","shell sleep 1"],
+      "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
+      "preRestartCommands": [],
+      "preLaunchTask": "build release_size LPC824 QFN33 nuclone blinky project",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC824.svd",
     },
     {
       "name": "Debug debug LPC824 TSSOP20 nuclone blinky",
@@ -92,7 +110,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC824 TSSOP20 nuclone blinky project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC824.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC824.svd",
     },
     {
       "name": "Debug debug LPC844 PQFP64 empty",
@@ -110,7 +128,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC844 QFP64 empty project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC844.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC844.svd",
     },
     {
       "name": "Debug debug LPC845 PQFP48 empty",
@@ -128,7 +146,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC845 QFP48 empty project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC845.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC845.svd",
     },
     {
       "name": "Debug debug LPC845 PQFP48 nuclone blinky",
@@ -146,7 +164,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC845 QFP48 nuclone blinky project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC845.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC845.svd",
     },
     {
       "name": "Debug debug LPC1114/323 PQFP48 empty project",
@@ -164,7 +182,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC1114/323 QFP48 empty project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC111x.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC111x.svd",
     },
     {
       "name": "Debug debug LPC1125/303 PQFP48 empty project",
@@ -182,7 +200,7 @@
       "postLaunchCommands": ["set {int}0x40048000 = 2","compare-sections"],
       "preRestartCommands": [],
       "preLaunchTask": "build LPC1125/303 QFP48 empty project",
-      "svdFile": "${workspaceFolder}/libMcuLL/svd/nxp/LPC112x.svd",
+      "svdFile": "${workspaceFolder}/libraries/libMcuLL/svd/nxp/LPC112x.svd",
     },
     {
       "name": "(gdb) Launch",

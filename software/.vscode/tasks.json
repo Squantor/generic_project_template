@@ -32,6 +32,20 @@
       "problemMatcher": "$gcc"
     },
     {
+      "label": "build LPC824 QFN33 nuclone blinky project",
+      "type": "shell",
+      "command": "bear -- make PROJECT=LPC824M201HI33_blinky -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "build release_size LPC824 QFN33 nuclone blinky project",
+      "type": "shell",
+      "command": "bear -- make PROJECT=LPC824M201HI33_blinky CONFIG=release_size -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
       "label": "build LPC824 TSSOP20 nuclone blinky project",
       "type": "shell",
       "command": "bear -- make PROJECT=LPC824M201DH20_blinky -j20",

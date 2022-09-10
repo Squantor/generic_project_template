@@ -5,4 +5,4 @@ set -o pipefail
 set -o nounset
 
 # prebuild script before building the program
-echo "executing prebuild script"
+echo "prebuilding!!!"

@@ -5,4 +5,4 @@ set -o pipefail
 set -o nounset
 
 # postbuild script to execute after executable generation
-echo "executing postbuild script"
+echo "postbuilding!!!"

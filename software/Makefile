@@ -131,14 +131,9 @@ $(foreach library,$($(PROJECT)_LIBS),$(eval OBJECTS += $(addprefix $(OBJ_PATH)/,
 $(foreach library,$($(PROJECT)_LIBS),$(eval $(library)_OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
 $(foreach library,$($(PROJECT)_LIBS),$(eval DEPS := $($(library)_OBJS:.o=.d)))
 
-
-all: executable
+all: $(EXECUTABLE)
 
 .PHONY: all
-
-executable: $(EXECUTABLE)
-
-.PHONY: executable
 
 -include $(DEPS)
 
@@ -151,6 +146,10 @@ $(BIN_PATH)/build-tag:
 > $(C)$(TOUCH) $@
 
 $(OBJ_PATH)/build-tag:
+ifdef $(PROJECT)_PREBUILD_SCRIPT
+> $(U) "PRE $($(PROJECT)_PREBUILD_SCRIPT)"
+> $(C)$(SHELL) $($(PROJECT)_PREBUILD_SCRIPT)
+endif
 > $(C)$(MKDIR) -p $(OBJ_PATH)
 > $(C)$(TOUCH) $@
 
@@ -166,6 +165,10 @@ $(EXECUTABLE): $(BINDEPS) $(OBJECTS) $(LIBRARIES)
 > $(C)$(TOOLCHAIN_PREFIX)$(SIZE) $@ >> $(SIZELOG_PATH)size$(CONFIG).log
 > $(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
 > $(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
+ifdef $(PROJECT)_POSTBUILD_SCRIPT
+> $(U) "POST $($(PROJECT)_POSTBUILD_SCRIPT)"
+> $(C)$(SHELL) $($(PROJECT)_POSTBUILD_SCRIPT)
+endif
 
 $(BIN_PATH)/%.a: $(OBJECTS)
 > $(U) "AR  $(basename $(notdir $@))"

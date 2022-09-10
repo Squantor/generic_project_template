@@ -21,6 +21,9 @@ $(PROJ_DIR)/src/test.c
 
 $(NAME)_INCLUDES := -I$(PROJ_DIR)/inc
 
+$(NAME)_PREBUILD_SCRIPT := $(PROJ_DIR)/prebuild.sh
+$(NAME)_POSTBUILD_SCRIPT := $(PROJ_DIR)/prebuild.sh
+
 # --- nothing user definable below ---
 PROJECTS += $(NAME)
 $(NAME)_PROJECT_ROOT := $(PROJ_DIR)

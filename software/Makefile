@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20220909
+# Version: 20220910
 
 # User definable settings are here
 

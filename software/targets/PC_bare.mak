@@ -5,7 +5,7 @@
 # settings for the PC bare target
 # this is just a PC target with no libraries at all
 #
-# Version: 20201218
+# Version: 20220911
 
 # Tool settings
 include targets/TC_local.mak
@@ -32,3 +32,4 @@ DEFINES_debug += -DDEBUG
 DEFINES +=
 FILES_debug := 
 FILES_rekease := 
+TARGET_LIBRARIES := -lgcc

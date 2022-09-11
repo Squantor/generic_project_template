@@ -4,7 +4,7 @@
 
 # settings for the MCU target
 #
-# Version: 20220909
+# Version: 20220911
 
 ifndef $(PROJECT)_MCU
 $(error Project MCU is not defined!)
@@ -31,4 +31,4 @@ DEFINES += -D$(BOARD)
 DEFINES_debug += -DDEBUG
 DEFINES_release_size += -DNDEBUG
 DEFINES_release_speed += -DNDEBUG
-LIBS += -lgcc
+TARGET_LIBRARIES := -lgcc

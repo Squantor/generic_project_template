@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20220910
+# Version: 20220911
 
 # User definable settings are here
 
@@ -27,10 +27,19 @@ DOC_ROOT := doxyOutput
 BIN_ROOT := bin
 OBJ_ROOT := build
 
+# Verbosity handling
+ifeq ($(VERBOSE),1)
+  C = 
+  U = @true
+else
+  C = @
+  U = @echo
+endif
+
 # --- sane defaults ---
 .DEFAULT_GOAL := all
 SHELL := bash
-.ONESHELL:
+# .ONESHELL # commented out as it is incompatible in how we do verbosity
 .SHELLFLAGS := -eu -o pipefail -c
 .DELETE_ON_ERROR:
 MAKEFLAGS += --warn-undefined-variables
@@ -41,15 +50,6 @@ ifeq ($(origin .RECIPEPREFIX), undefined)
   $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later)
 endif
 .RECIPEPREFIX = >
-
-# Verbosity handling
-ifeq ($(VERBOSE),1)
-  C = 
-  U = @true
-else
-  C = @
-  U = @echo
-endif
 
 # collect all libraries
 LIBRARIES :=
@@ -126,7 +126,7 @@ PROJECT_OBJECTS := $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 OBJECTS := $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$(FILES)))
 DEPS := $(OBJECTS:.o=.d)
 # create lists of prerequisites for each library
-LIBRARIES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
+LIBRARY_FILES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
 $(foreach library,$($(PROJECT)_LIBS),$(eval OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
 $(foreach library,$($(PROJECT)_LIBS),$(eval $(library)_OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
 $(foreach library,$($(PROJECT)_LIBS),$(eval DEPS := $($(library)_OBJS:.o=.d)))
@@ -146,28 +146,28 @@ $(BIN_PATH)/build-tag:
 > $(C)$(TOUCH) $@
 
 $(OBJ_PATH)/build-tag:
-ifdef $(PROJECT)_PREBUILD_SCRIPT
-> $(U) "PRE $($(PROJECT)_PREBUILD_SCRIPT)"
-> $(C)$(SHELL) $($(PROJECT)_PREBUILD_SCRIPT)
-endif
 > $(C)$(MKDIR) -p $(OBJ_PATH)
 > $(C)$(TOUCH) $@
+ifdef $(PROJECT)_PREBUILD_SCRIPT
+> $(U) "PRE $($(PROJECT)_PREBUILD_SCRIPT)"
+> $(SHELL) $($(PROJECT)_PREBUILD_SCRIPT)
+endif
 
 doc: $(DOCDEPS)
 > $(C)$(MKDIR) -p $(DOC_PATH)
 > $(C)( cat doxygen/Doxyfile ; echo "@INCLUDE = $(PROJECT)/$(PROJECT).doxy" ) | doxygen -
 .PHONY: doc
 
-$(EXECUTABLE): $(BINDEPS) $(OBJECTS) $(LIBRARIES)
+$(EXECUTABLE): $(BINDEPS) $(OBJECTS) $(LIBRARY_FILES)
 > $(U) "Linking $(EXECUTABLE)"
-> $(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(PROJECT_OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBRARIES)
+> $(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(LDFLAGS) $(PROJECT_OBJECTS) -Xlinker -Map="$@.map" -o $@ $(LIBRARY_FILES) $(TARGET_LIBRARIES)
 > $(C)date >> $(SIZELOG_PATH)size$(CONFIG).log
 > $(C)$(TOOLCHAIN_PREFIX)$(SIZE) $@ >> $(SIZELOG_PATH)size$(CONFIG).log
 > $(C)$(TOOLCHAIN_PREFIX)$(OBJCOPY) -R .stack -O binary $@ $(BIN_PATH)/$(PROJECT).bin
 > $(C)$(TOOLCHAIN_PREFIX)$(OBJDUMP) -h -S "$@" > "$(BIN_PATH)/$(PROJECT).lss"
 ifdef $(PROJECT)_POSTBUILD_SCRIPT
 > $(U) "POST $($(PROJECT)_POSTBUILD_SCRIPT)"
-> $(C)$(SHELL) $($(PROJECT)_POSTBUILD_SCRIPT)
+> $(SHELL) $($(PROJECT)_POSTBUILD_SCRIPT)
 endif
 
 $(BIN_PATH)/%.a: $(OBJECTS)

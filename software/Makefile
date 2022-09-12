@@ -54,26 +54,26 @@ endif
 # collect all libraries
 LIBRARIES :=
 ifneq ("$(wildcard libraries/libraries.mak)","")
-include libraries/libraries.mak
+  include libraries/libraries.mak
 endif
 
 # collect all project information
 ifndef PROJECT
-$(error no PROJECT defined!)
+  $(error no PROJECT defined!)
 endif
 PROJECTS :=
 ifneq ("$(wildcard projects/projects.mak)","")
-include projects/projects.mak
+  include projects/projects.mak
 endif
 # check if PROJECT exists in PROJECTS
 ifeq (, $(filter $(PROJECT),$(PROJECTS)))
-$(error Unknown project $(PROJECT)!)
+  $(error Unknown project $(PROJECT)!)
 endif
 
 
 # Target definition handling
 ifndef $(PROJECT)_TARGET
-#$(error Target is not defined!)
+  $(error Target is not defined!)
 else
 include targets/$($(PROJECT)_TARGET).mak
 endif
@@ -90,8 +90,8 @@ FILES += $($(PROJECT)_FILES)
 # load first config as default configuration
 CONFIG ?= $(firstword $(CONFIGS))
 # check if it is a valid configuration
-ifeq (, $(findstring $(CONFIG),$(CONFIGS)))
-#$(error Unknown configuration $(CONFIG)!)
+ifeq (, $(filter $(CONFIG),$(CONFIGS)))
+  $(error Unknown configuration $(CONFIG)!)
 endif
 
 # transform configuration specific variables to variables used by the build

@@ -27,4 +27,4 @@ include $(BASE_DIR)/projects/LPC1114BD48_323/LPC1114BD48_323.mak
 include $(BASE_DIR)/projects/LPC1125BD48_303/LPC1125BD48_303.mak
 include $(BASE_DIR)/projects/STM32F030K6_blinky/STM32F030K6_blinky.mak
 include $(BASE_DIR)/projects/STM32F031K6_blinky/STM32F031K6_blinky.mak
-include $(BASE_DIR)/projects/RP2040_demo/RP2040_demo.mak
+include $(BASE_DIR)/projects/RP2040_blinky/RP2040_blinky.mak

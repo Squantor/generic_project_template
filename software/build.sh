@@ -55,7 +55,7 @@ make -j18 PROJECT=STM32F030K6_blinky CONFIG=debug
 make -j18 PROJECT=STM32F031K6_blinky CONFIG=release_size
 make -j18 PROJECT=STM32F031K6_blinky CONFIG=release_speed
 make -j18 PROJECT=STM32F031K6_blinky CONFIG=debug
-make -j18 PROJECT=RP2040_demo CONFIG=release_size
-make -j18 PROJECT=RP2040_demo CONFIG=release_speed
-make -j18 PROJECT=RP2040_demo CONFIG=debug
+make -j18 PROJECT=RP2040_blinky CONFIG=release_size
+make -j18 PROJECT=RP2040_blinky CONFIG=release_speed
+make -j18 PROJECT=RP2040_blinky CONFIG=debug
 make clean

@@ -108,5 +108,19 @@
       "group": "build",
       "problemMatcher": "$gcc"
     }
+    {
+      "label": "build debug RP2040 demo project",
+      "type": "shell",
+      "command": "bear -- make PROJECT=RP2040_demo CONFIG=debug -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "build release size RP2040 demo project",
+      "type": "shell",
+      "command": "bear -- make PROJECT=RP2040_demo CONFIG=release_size -j20",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
   ]
 }

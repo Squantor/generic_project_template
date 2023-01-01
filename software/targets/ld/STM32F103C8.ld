@@ -4,13 +4,6 @@ SPDX-License-Identifier: MIT
 Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
-/*
-
-Linker file for the STM32F103C8 microcontroller from ST.
-
-Based on the unified cortex startup code by Paul Sokolovsky.
-
-*/
 
 MEMORY
 {

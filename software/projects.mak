@@ -2,7 +2,7 @@
 # Copyright (c) 2022 Bart Bilos
 # For conditions of distribution and use, see LICENSE file
 
-# Version: 20220715
+# Version: 20230101
 
 # current makefile base dir relative to Makefile
 BASE_DIR := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
@@ -27,3 +27,4 @@ include $(BASE_DIR)/projects/LPC1114BD48_323/LPC1114BD48_323.mak
 include $(BASE_DIR)/projects/LPC1125BD48_303/LPC1125BD48_303.mak
 include $(BASE_DIR)/projects/STM32F030K6_blinky/STM32F030K6_blinky.mak
 include $(BASE_DIR)/projects/STM32F031K6_blinky/STM32F031K6_blinky.mak
+include $(BASE_DIR)/projects/RP2040_demo/RP2040_demo.mak

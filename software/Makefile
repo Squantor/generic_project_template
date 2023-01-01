@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20220912
+# Version: 20230101
 
 # User definable settings are here
 
@@ -184,7 +184,7 @@ $(OBJ_PATH)/%.cpp.o: %.cpp
 > $(C)$(MKDIR) -p $(dir $@) 
 > $(C)$(TOOLCHAIN_PREFIX)$(CXX_COMPILER) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<
 
-$(OBJ_PATH)/%.s.o: %.s
+$(OBJ_PATH)/%.S.o: %.S
 > $(U) "ASM $(basename $(notdir $@))"
 > $(C)$(MKDIR) -p $(dir $@) 
 > $(C)$(TOOLCHAIN_PREFIX)$(C_COMPILER) $(ASMFLAGS) $(INCLUDES) -MP -MMD -c -o $@ $<

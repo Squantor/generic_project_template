@@ -4,7 +4,7 @@
 
 # settings for the MCU target
 #
-# Version: 20220911
+# Version: 20230101
 
 ifndef $(PROJECT)_MCU
 $(error Project MCU is not defined!)
@@ -26,7 +26,7 @@ CXXFLAGS_debug += -Og -g3
 CXXFLAGS_release_size += -Os -g
 CXXFLAGS_release_speed += -O2 -g
 ASMFLAGS += -c -x assembler-with-cpp
-LDFLAGS +=  -nostdlib -Wl,--gc-sections -Wl,-print-memory-usage -Wl,-Ltargets/ld -flto
+LDFLAGS +=  -nostdlib -Wl,--gc-sections -Wl,--print-memory-usage -Wl,-Ltargets/ld -flto
 DEFINES += -D$(BOARD)
 DEFINES_debug += -DDEBUG
 DEFINES_release_size += -DNDEBUG

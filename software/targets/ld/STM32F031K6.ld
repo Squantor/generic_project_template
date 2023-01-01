@@ -5,7 +5,6 @@ Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
 
-/* UM10601 Ch.2 p.9 */
 MEMORY
 {
     rom   :   ORIGIN = 0x08000000, LENGTH = 32K

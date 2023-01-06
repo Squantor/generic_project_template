@@ -70,6 +70,11 @@ ifeq (, $(filter $(PROJECT),$(PROJECTS)))
   $(error Unknown project $(PROJECT)!)
 endif
 
+# check project library definitions
+INVALID_LIBS := $(filter-out $(LIBRARIES),$($(PROJECT)_LIBS))
+ifneq ($(INVALID_LIBS),)
+	$(error invalid project libraries in $(PROJECT)_LIBS: $(INVALID_LIBS))
+endif
 
 # Target definition handling
 ifndef $(PROJECT)_TARGET
@@ -78,6 +83,8 @@ else
 include targets/$($(PROJECT)_TARGET).mak
 endif
 
+# --- build engine ---
+
 # --- collect all files ---
 # TODO, make INCLUDES and FILES generated here, dont let any library or project touch these
 INCLUDES += $(foreach library,$($(PROJECT)_LIBS),$($(library)_LIB_INCLUDES))
@@ -85,8 +92,7 @@ INCLUDES += $(foreach library,$($(PROJECT)_LIBS),$($(library)_LIB_INCLUDES))
 INCLUDES += $($(PROJECT)_INCLUDES)
 FILES += $($(PROJECT)_FILES)
 
-# --- build engine ---
-
+# --- configuration management --
 # load first config as default configuration
 CONFIG ?= $(firstword $(CONFIGS))
 # check if it is a valid configuration

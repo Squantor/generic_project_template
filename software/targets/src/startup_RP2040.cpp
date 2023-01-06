@@ -33,7 +33,7 @@ extern uint32_t _data_end;
 extern uint32_t _bss_start;
 extern uint32_t _bss_end;
 extern uint32_t _stack_top;
-extern void _end_stack(void);
+extern void _stack_end(void);
 extern void (*__preinit_array_start[])(void);
 extern void (*__preinit_array_end[])(void);
 extern void (*__init_array_start[])(void);
@@ -48,7 +48,7 @@ void Reset_Handler(void);
 /**
  * @brief Reset handler
  */
-void Reset_Handler(void) {
+__attribute__((section(".romfunc"))) void Reset_Handler(void) {
   uint32_t *src, *dst;
   // Copy flash to RAM based sections .text and .data
   // we copy everything in one go starting at _text_start until _data_end

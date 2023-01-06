@@ -22,7 +22,6 @@ SECTIONS {
 
     .text : ALIGN(4)
     {
-        FILL(0xff)
         KEEP(*(.cortex_vectors))
         KEEP(*(.vendor_vectors))
         . = ALIGN(4) ;
@@ -61,35 +60,34 @@ SECTIONS {
         . = ALIGN(4);
         /* End C++ */
 
-        _end_text = .;
+        _text_end = .;
     } > flash
 
     /* http://sourceware.org/binutils/docs/ld/Output-Section-LMA.html */
     .data : ALIGN(4)
     {
-        FILL(0xff)
-        _start_data = .;
+        _data_start = .;
         *(.ramfunc*)
         *(.data*)
-        _end_data = .;
+        _data_end = .;
     } > ram AT > flash
 
     .bss : ALIGN(4)
     {
-        _start_bss = .;
+        _bss_start = .;
         *(.bss*)
         *(COMMON)
-        _end_bss = .;
+        _bss_end = .;
     } > ram
 
     . = ALIGN(4);
 
-    _start_stack = .;
+    _stack_start = .;
     /* http://sourceware.org/binutils/docs/ld/MEMORY.html */
-    PROVIDE(_end_stack = ORIGIN(ram) + LENGTH(ram));
+    PROVIDE(_stack_end = ORIGIN(ram) + LENGTH(ram));
     /* create startup checksum, UM10800, chapter 3.6.2 */
     PROVIDE(__valid_user_code_checksum = 0 - 
-                                         (_end_stack 
+                                         (_stack_end
                                          + (Reset_Handler + 1) 
                                          + (NMI_Handler + 1) 
                                          + (HardFault_Handler + 1) 
@@ -98,7 +96,7 @@ SECTIONS {
                                          + (UsageFault_Handler + 1) 
                                          )
            );
-    PROVIDE(_data_flash = LOADADDR(.data));
+    PROVIDE(_flash_data = LOADADDR(.data));
 }
 
 _end = .;

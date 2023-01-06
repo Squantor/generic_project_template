@@ -9,7 +9,7 @@ For conditions of distribution and use, see LICENSE file
 extern "C" {
 #endif
 
-extern void _end_stack(void);
+extern void _stack_end(void);
 extern void Reset_Handler(void);
 extern void Dummy_Handler(void);
 
@@ -34,7 +34,7 @@ extern void (*const core_vector_table[16])(void);
 __attribute__((used, section(".cortex_vectors"))) void (*const core_vector_table[16])(void) = {
   // See http://sourceware.org/binutils/docs/ld/Source-Code-Reference.html
   // why the address is used here (if not intuitive)
-  &_end_stack,
+  &_stack_end,
   Reset_Handler,
   NMI_Handler,
   HardFault_Handler,

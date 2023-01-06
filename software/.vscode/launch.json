@@ -222,7 +222,7 @@
       ],
       "preLaunchTask": "build PC example",
     },
-{
+    {
       "name": "debug debug RP2040 blinky",
       "cwd": "${workspaceRoot}",
       "executable": "${workspaceFolder}/bin/RP2040_blinky/debug/RP2040_blinky.elf",

@@ -11,7 +11,7 @@
 include targets/TC_local.mak
 
 #needed files for this target
-FILES += targets/src/PC_bare_startup.s targets/src/PC_bare_exit.c targets/src/PC_bare_start.c
+FILES += targets/src/PC_bare_startup.S targets/src/PC_bare_exit.c targets/src/PC_bare_start.c
 INCLUDES += -Itargets/inc
 
 # valid configurations like debug, release test, etcetera

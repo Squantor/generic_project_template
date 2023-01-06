@@ -11,7 +11,7 @@ include targets/core_CortexM0plus.mak
 
 # Specific C files and linker scripts
 FILES += targets/src/LPC824.cpp targets/src/startup_LPC82X.cpp \
-targets/src/LPC82X_aeabi_romdiv_patch.s
+targets/src/LPC82X_aeabi_romdiv_patch.S
 DEFINES += -DMCU_$(MCU)
 LDSCRIPT = -T"targets/ld/LPC824.ld"
 

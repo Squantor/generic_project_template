@@ -15,5 +15,5 @@ FILES += targets/src/RP2040.cpp \
          targets/src/startup.cpp \
 				 targets/src/RP2040_boot2_$(FLASH).S
 DEFINES += -DMCU_$(MCU)
-LDSCRIPT = -T"targets/ld/RP2040.ld"
+LDSCRIPT = -T"targets/ld/RP2040_$(FLASH).ld"
 INCLUDES += -Itargets/inc

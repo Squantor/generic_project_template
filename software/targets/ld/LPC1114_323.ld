@@ -5,16 +5,10 @@ Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
 
-/*
-
-Linker file for the LPC1114_323 microcontroller from NXP.
-
-*/
-
 /* UM10398 Table 4 + Chapter 2.2 Memory map */
 MEMORY
 {
-    rom   :   ORIGIN = 0x00000000, LENGTH = 48K
+    flash :   ORIGIN = 0x00000000, LENGTH = 48K
     ram   :   ORIGIN = 0x10000000, LENGTH = 8K
 }
 

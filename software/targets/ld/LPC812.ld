@@ -8,7 +8,7 @@ For conditions of distribution and use, see LICENSE file
 /* UM10601 Ch.2 p.9 */
 MEMORY
 {
-    rom   :   ORIGIN = 0x00000000, LENGTH = 16K
+    flash :   ORIGIN = 0x00000000, LENGTH = 16K
     ram   :   ORIGIN = 0x10000000, LENGTH = 4K
 }
 

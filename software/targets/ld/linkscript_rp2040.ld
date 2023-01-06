@@ -35,6 +35,7 @@ SECTIONS {
     _text_start = .;
     KEEP(*(.cortex_vectors))
     KEEP(*(.vendor_vectors))
+    *(.romfunc*)
     *(.text*)
     *(.rodata*)
 

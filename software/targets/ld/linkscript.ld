@@ -14,6 +14,7 @@ SECTIONS {
         KEEP(*(.vectors))
         KEEP(*(.cortex_vectors))
         KEEP(*(.vendor_vectors))
+        *(.romfunc*)
         *(.text*)
         *(.rodata*)
 
@@ -49,7 +50,7 @@ SECTIONS {
         /* End C++ */
 
         _end_text = .;
-    } >rom
+    } > flash
 
     /* http://sourceware.org/binutils/docs/ld/Output-Section-LMA.html */
     .data :
@@ -58,7 +59,7 @@ SECTIONS {
         *(.ramfunc*) /* special section for RAM functions */
         *(.data*)
         _end_data = .;
-    } >ram AT >rom
+    } > ram AT > flash
 
     .bss :
     {
@@ -66,7 +67,7 @@ SECTIONS {
         *(.bss*)
         *(COMMON)
         _end_bss = .;
-    } >ram
+    } > ram
 
     . = ALIGN(4);
 

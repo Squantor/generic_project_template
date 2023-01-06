@@ -5,16 +5,10 @@ Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
 
-/*
-
-Linker file for the LPC1125 microcontroller from NXP.
-
-*/
-
 /* UM10839 Ch.2.1 Memory map */
 MEMORY
 {
-    rom   :   ORIGIN = 0x00000000, LENGTH = 64K
+    flash :   ORIGIN = 0x00000000, LENGTH = 64K
     ram   :   ORIGIN = 0x10000000, LENGTH = 8K
 }
 

@@ -5,18 +5,10 @@ Copyright (c) 2021 Bart Bilos
 For conditions of distribution and use, see LICENSE file
 */
 
-/*
-
-Linker file for the LPC824 microcontroller from NXP.
-
-Based on the unified cortex startup code by Paul Sokolovsky.
-
-*/
-
-/* UM10600 Ch.2 p.9 */
+/* TODO: usermanual chapter update UM10600 Ch.2 p.9 */
 MEMORY
 {
-    rom   :   ORIGIN = 0x00000000, LENGTH = 32K
+    flash :   ORIGIN = 0x00000000, LENGTH = 32K
     ram   :   ORIGIN = 0x10000000, LENGTH = 8K
 }
 

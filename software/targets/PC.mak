@@ -4,7 +4,7 @@
 
 # settings for the PC target
 #
-# Version: 20220911
+# Version: 20230127
 
 # Tool settings
 include targets/TC_local.mak
@@ -26,5 +26,5 @@ DEFINES_release += -DNDEBUG
 DEFINES_debug += -DDEBUG
 DEFINES += $($(PROJECT)_DEFINES)
 FILES_debug := 
-FILES_rekease := 
+FILES_release := 
 TARGET_LIBRARIES :=

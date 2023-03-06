@@ -86,9 +86,7 @@ endif
 # --- build engine ---
 
 # --- collect all files ---
-# TODO, make INCLUDES and FILES generated here, dont let any library or project touch these
 INCLUDES += $(foreach library,$($(PROJECT)_LIBS),$($(library)_LIB_INCLUDES))
-# FILES += $(foreach file,$($(PROJECT)_LIBS),$($(file)_LIB_FILES))
 INCLUDES += $($(PROJECT)_INCLUDES)
 FILES += $($(PROJECT)_FILES)
 
@@ -135,7 +133,6 @@ DEPS := $(OBJECTS:.o=.d)
 LIBRARY_FILES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
 $(foreach library,$($(PROJECT)_LIBS),$(eval OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
 $(foreach library,$($(PROJECT)_LIBS),$(eval $(library)_OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
-# $(foreach library,$($(PROJECT)_LIBS),$(eval DEPS += $($(library)_OBJS:.o=.d)))
 $(foreach library,$($(PROJECT)_LIBS),$(eval DEPS += $(addprefix $(OBJ_PATH)/, $(addsuffix .d,$($(library)_LIB_FILES)))))
 
 all: $(BINDEPS) $(EXECUTABLE)

@@ -5,7 +5,7 @@
 # Generic project makefile
 # Heavily inspired by: https://github.com/bronson/makefile-death
 #
-# Version: 20230106
+# Version: 20230304
 
 # User definable settings are here
 
@@ -135,7 +135,8 @@ DEPS := $(OBJECTS:.o=.d)
 LIBRARY_FILES := $(foreach library,$($(PROJECT)_LIBS),$(BIN_PATH)/$(library).a)
 $(foreach library,$($(PROJECT)_LIBS),$(eval OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
 $(foreach library,$($(PROJECT)_LIBS),$(eval $(library)_OBJECTS += $(addprefix $(OBJ_PATH)/, $(addsuffix .o,$($(library)_LIB_FILES)))))
-$(foreach library,$($(PROJECT)_LIBS),$(eval DEPS := $($(library)_OBJS:.o=.d)))
+# $(foreach library,$($(PROJECT)_LIBS),$(eval DEPS += $($(library)_OBJS:.o=.d)))
+$(foreach library,$($(PROJECT)_LIBS),$(eval DEPS += $(addprefix $(OBJ_PATH)/, $(addsuffix .d,$($(library)_LIB_FILES)))))
 
 all: $(BINDEPS) $(EXECUTABLE)
 

@@ -13,6 +13,10 @@ fp-info-cache
 *.kicad_prl
 \#auto_saved_files\#
 
+# kicad 7 temporaries and local settings
+*.kicad_pcb.lck
+*.kicad_sch.lck
+
 # kicad outputs
 plots/
 plots-*/

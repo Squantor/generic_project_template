@@ -4,121 +4,121 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "clean",
+      "type": "shell",
+      "command": "make clean",
+      "group": "build",
+      "problemMatcher": "$gcc"
+    },
+    {
       "label": "build LPC812 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC812M101DH20 -j20",
+      "command": "compiledb make PROJECT=LPC812M101DH20 -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC812 nuclone blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC812M101DH20_blinky -j20",
+      "command": "compiledb make PROJECT=LPC812M101DH20_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC824 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC824M201HI33 -j20",
+      "command": "compiledb make PROJECT=LPC824M201HI33 -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC824 QFN33 nuclone blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC824M201HI33_blinky -j20",
+      "command": "compiledb make PROJECT=LPC824M201HI33_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC824 QFN33 nuclone blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC824M201HI33_blinky -j20",
+      "command": "compiledb make PROJECT=LPC824M201HI33_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build release_size LPC824 QFN33 nuclone blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC824M201HI33_blinky CONFIG=release_size -j20",
+      "command": "compiledb make PROJECT=LPC824M201HI33_blinky CONFIG=release_size -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC824 TSSOP20 nuclone blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC824M201DH20_blinky -j20",
+      "command": "compiledb make PROJECT=LPC824M201DH20_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC844 QFP64 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC844M201BD64_empty -j20",
+      "command": "compiledb make PROJECT=LPC844M201BD64_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC845 QFP48 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC845M301BD48_empty -j20",
+      "command": "compiledb make PROJECT=LPC845M301BD48_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC845 QFP48 nuclone blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC845M301HI48_blinky -j20",
+      "command": "compiledb make PROJECT=LPC845M301HI48_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC1114/323 QFP48 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC1114BD48_323_empty -j20",
+      "command": "compiledb make PROJECT=LPC1114BD48_323_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build LPC1125/303 QFP48 empty project",
       "type": "shell",
-      "command": "bear -- make PROJECT=LPC1125BD48_303_empty -j20",
+      "command": "compiledb make PROJECT=LPC1125BD48_303_empty -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build PC example",
       "type": "shell",
-      "command": "bear -- make PROJECT=PC config=debug -j20",
+      "command": "compiledb make PROJECT=PC config=debug -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build PC bare example",
       "type": "shell",
-      "command": "bear -- make PROJECT=PC_bare config=debug -j20",
+      "command": "compiledb make PROJECT=PC_bare config=debug -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
-      "label": "clean",
-      "type": "shell",
-      "command": "make clean",
-      "group": "build",
-      "problemMatcher": "$gcc"
-    }
-    {
       "label": "build debug RP2040 blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=RP2040_blinky CONFIG=debug -j20",
+      "command": "compiledb make PROJECT=RP2040_blinky CONFIG=debug -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
     {
       "label": "build release size RP2040 blinky project",
       "type": "shell",
-      "command": "bear -- make PROJECT=RP2040_blinky CONFIG=release_size -j20",
+      "command": "compiledb make PROJECT=RP2040_blinky CONFIG=release_size -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },

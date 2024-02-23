@@ -19,15 +19,15 @@ $(PROJ_DIR)/disassemblies/build-tag:
 
 #project hardware specific commands
 gdbbmp: all
-> $(TOOLCHAIN_PREFIX)$(GDB) -x ./gdb_scripts/$(PROJECT)_$(CONFIG).txt
+> $(GDB) -x ./gdb_scripts/$(PROJECT)_$(CONFIG).txt
 .PHONY: gdbbmp
 
 tpwrdisable:
-> $(TOOLCHAIN_PREFIX)$(GDB) -x ./gdb_scripts/bmp_tpwr_disable.txt
+> $(GDB) -x ./gdb_scripts/bmp_tpwr_disable.txt
 .PHONY: tpwrdisable
 
 tpwrenable:
-> $(TOOLCHAIN_PREFIX)$(GDB) -x ./gdb_scripts/bmp_tpwr_enable.txt
+> $(GDB) -x ./gdb_scripts/bmp_tpwr_enable.txt
 .PHONY: tpwrenable
 
 projects:

@@ -76,7 +76,7 @@
     {
       "label": "build LPC845 QFP48 nuclone blinky project",
       "type": "shell",
-      "command": "compiledb make PROJECT=LPC845M301HI48_blinky -j20",
+      "command": "compiledb make PROJECT=LPC845M301BD48_blinky -j20",
       "group": "build",
       "problemMatcher": "$gcc"
     },
